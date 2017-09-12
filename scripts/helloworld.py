@@ -15,14 +15,20 @@ GPIO.setwarnings(False)
 GPIO.setup(YELLOW, GPIO.OUT)
 GPIO.setup(GREEN, GPIO.OUT)
 GPIO.setup(RED, GPIO.OUT)
+GPIO.setup(WHITE, GPIO.OUT)
+GPIO.setup(BLUE, GPIO.OUT)
 
 try:
    while (1):
       GPIO.output(YELLOW, True)
       GPIO.output(GREEN, True)
       GPIO.output(RED, True)
+      GPIO.output(WHITE, True)
+      GPIO.output(BLUE, True)
 except KeyboardInterrupt:
     print "Good bye"
     GPIO.output(YELLOW, False)
     GPIO.output(GREEN, False)
     GPIO.output(RED, False)
+    GPIO.output(WHITE, False)
+    GPIO.output(BLUE, False)
