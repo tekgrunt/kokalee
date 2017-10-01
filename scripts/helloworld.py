@@ -3,11 +3,11 @@
 
 import RPi.GPIO as GPIO
 
-YELLOW = 25
-GREEN = 17
-RED = 27
-WHITE = 26
-BLUE = 16
+YELLOW = 26
+GREEN = 19
+RED = 13
+WHITE = 06
+BLUE = 05
 
 # Pin Setup:
 GPIO.setmode(GPIO.BCM)   # Broadcom pin-numbering scheme.
