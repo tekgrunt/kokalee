@@ -1,0 +1,51 @@
+{
+  "name": "hoodie-notes",
+  "version": "1.0.0",
+  "description": "A simple Markdown notebook built with React and Hoodie",
+  "license": "MIT",
+  "private": false,
+  "author": "Jake Peyser (https://github.com/JakePeyser)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jakepeyser/hoodie-notes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jakepeyser/hoodie-notes/issues"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "hoodie",
+    "markdown",
+    "notes"
+  ],
+  "scripts": {
+    "start": "hoodie",
+    "build": "webpack"
+  },
+  "dependencies": {
+    "@hoodie/client": "^10.1.0",
+    "hoodie": "^28.2.0",
+    "moment": "^2.18.1",
+    "pouchdb-browser": "^6.3.4",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "redux": "^3.7.0",
+    "redux-thunk": "^2.2.0",
+    "showdown": "^1.7.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "file-loader": "^0.11.2",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "svg-react-loader": "^0.4.4",
+    "webpack": "^3.0.0"
+  }
+}

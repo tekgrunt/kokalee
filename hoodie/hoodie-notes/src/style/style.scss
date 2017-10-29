@@ -1,0 +1,64 @@
+// Colors
+$primary: #e94e1b;
+$secondary: #f9c4b3;
+$border: #520644;
+$border-light: #c1a7bc;
+$button: #282828;
+$button-hover: #b3b3b3;
+$note-selected: #273183;
+$note-hover: #bfbcd8;
+$text-light: #fefefe;
+$text-dark: #404040;
+$error: #bd1a22;
+
+// Lengths
+$nav-height: 160px;
+$nav-padding: 20px;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  color: $text-dark;
+}
+
+.App {
+  text-align: center;
+}
+
+input {
+  width: 200px;
+  height: 25px;
+  padding: 2px 5px;
+  border: 1px solid $border;
+  border-radius: 2px;
+  outline: none;
+  font-size: 16px;
+}
+
+button {
+  height: 25px;
+  min-width: 100px;
+  padding: 4px 8px;
+  border: 2px solid $button;
+  border-radius: 2px;
+  outline: none;
+  background: $button;
+  font-weight: 600;
+  color: $text-light;
+  cursor: pointer;
+  transition: all .2s linear;
+  &:hover {
+    background: $button-hover;
+    color: $text-dark;
+  }
+}
+
+.error {
+  color: red;
+  font-size: 12px
+}
+
+@import 'header';
+@import 'login';
+@import 'notes';
