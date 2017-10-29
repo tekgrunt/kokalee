@@ -16,7 +16,7 @@ public class main extends PApplet{
     public void setup(){
     	
     	width = 2000	;
-    	height = 1000;
+    	height = 1400;
     	
     	size(width, height);
     	frameRate(60);
@@ -49,7 +49,7 @@ public class main extends PApplet{
     //versions will have a parameter outlining the number of nodes that are to be created.
     public void createLeafNodes(){
     	
-    	int numNodes = (int) this.random(10);
+    	int numNodes = (int) this.random(60);
     	
     	for (int i = 0; i < numNodes ; i++){
     		leafNodeArray.add(new Leaf(this));
