@@ -26,7 +26,10 @@
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "dependencies": {
-    "hoodie": "28.2.0"
+    "@hoodie/client": "^10.1.1",
+    "hoodie": "28.2.0",
+    "node-sass": "^4.5.3",
+    "pouchdb-browser": "^6.3.4"
   },
   "devDependencies": {
     "selsa": "^2.0.0",
