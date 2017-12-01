@@ -5,7 +5,6 @@ export interface ILogger {
 }
 
 export class Logger implements ILogger {
-
   info(msg: any) {
     console.info(msg);
   }
@@ -17,5 +16,4 @@ export class Logger implements ILogger {
   error(msg: any) {
     console.error(msg);
   }
-
 }

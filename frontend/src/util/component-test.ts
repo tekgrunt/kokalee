@@ -8,7 +8,6 @@ export interface IComponents {
 }
 
 export class ComponentTest {
-
   public vm: Vue;
 
   constructor(private template: string, private components: IComponents) {
@@ -27,11 +26,9 @@ export class ComponentTest {
     await Vue.nextTick();
     await callback(this.vm);
   }
-
 }
 
 export class MockLogger implements ILogger {
-
   constructor(private loggerSpy: SinonSpy) {
   }
 
