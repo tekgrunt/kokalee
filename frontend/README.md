@@ -38,3 +38,6 @@ npm run clean
 # check for updates, unused dependencies
 npx npm-check
 ```
+
+hoodie store documentation: 
+https://github.com/hoodiehq/hoodie-store-client

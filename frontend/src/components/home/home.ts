@@ -1,4 +1,5 @@
 import {Component, Vue} from 'vue-property-decorator';
+import Hoodie from '../../util/hoodie'
 
 import './home.scss';
 

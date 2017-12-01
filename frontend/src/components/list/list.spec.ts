@@ -9,7 +9,7 @@ import {ListComponent} from './list';
 class MockListComponent extends ListComponent {
   constructor() {
     super();
-    this.axios = {
+    this.axios = <any>{
       get: () => {
         return Promise.resolve({data: [{name: 'test 1'}, {name: 'test 2'}, {name: 'test 3'}]});
       }
