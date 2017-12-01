@@ -1,0 +1,223 @@
+{
+  "extends": [
+    "tslint-eslint-rules",
+    "tslint-consistent-codestyle"
+  ],
+  "rules": {
+    // TSLint Core: TypeScript Specific
+    "adjacent-overload-signatures": true,
+    "member-access": false,
+    "member-ordering": [
+      true,
+      "static-before-instance",
+      "variables-before-functions"
+    ],
+    "no-any": {
+      "options:": true,
+      "severity": "warn"
+    },
+    "no-empty-interface": true,
+    "no-inferrable-types": [
+      true,
+      "ignore-params"
+    ],
+    "no-reference": true,
+    "prefer-for-of": true,
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      }
+    ],
+    "unified-signatures": true,
+
+    // TSLint Core: Functionality
+    "curly": [
+      true,
+      "ignore-same-line"
+    ],
+    "forin": true,
+    "import-blacklist": [
+      true,
+      "rxjs"
+    ],
+    "label-position": true,
+    "no-arg": true,
+    "no-bitwise": true,
+    "no-console": [
+      true,
+      "debug",
+      "info",
+      "time",
+      "timeEnd",
+      "trace"
+    ],
+    "no-construct": true,
+    "no-debugger": true,
+    "no-duplicate-super": true,
+    "no-duplicate-variable": true,
+    "no-empty": false,
+    "no-eval": true,
+    "no-invalid-template-strings": true,
+    "no-invalid-this": {
+      "options": true,
+      "severity": "warn"
+    },
+    "no-misused-new": true,
+    "no-shadowed-variable": {
+      "options": true,
+      "severity": "warn"
+    },
+    "no-string-literal": false,
+    "no-string-throw": true,
+    "no-switch-case-fall-through": true,
+    "no-unsafe-finally": true,
+    "no-unused-expression": true,
+    "no-unused-variable": {
+      "options": true,
+      "severity": "warn"
+    },
+    "no-use-before-declare": true,
+    "no-var-keyword": true,
+    "prefer-object-spread": true,
+    "radix": true,
+    "restrict-plus-operands": true,
+    "strict-type-predicates": true,
+    "triple-equals": [
+      true,
+      "allow-null-check"
+    ],
+    "typeof-compare": true,
+
+    // TSLint Core: Maintainability
+    "eofline": true,
+    "indent": false, // see ter-indent
+    "linebreak-style": [
+      false,
+      "LF"
+      // TODO: enable this rule"
+    ],
+    "max-line-length": [
+      true,
+      140
+    ],
+    "object-literal-sort-keys": false,
+    "prefer-const": true,
+
+    // TSLint Core: Style
+    "arrow-parens": true,
+    "arrow-return-shorthand": true,
+    "binary-expression-operand-order": true,
+    "callable-types": true,
+    "class-name": true,
+    "comment-format": [
+      true,
+      "check-space"
+    ],
+    "encoding": true,
+    "import-spacing": true,
+    "interface-over-type-literal": true,
+    "no-irregular-whitespace": true,
+    "no-trailing-whitespace": true,
+    "no-unnecessary-initializer": true,
+    "one-line": [
+      true,
+      "check-open-brace",
+      "check-catch",
+      "check-else",
+      "check-whitespace"
+    ],
+    "quotemark": [
+      true,
+      "single"
+    ],
+    "semicolon": [
+      "always"
+    ],
+    "variable-name": false,
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-separator",
+      "check-type"
+    ],
+    // https://github.com/buzinas/tslint-eslint-rules#possible-errors
+    "no-constant-condition": true,
+    "no-control-regex": true,
+    "no-duplicate-case": true,
+    "no-empty-character-class": true,
+    "no-ex-assign": true,
+    "no-extra-boolean-cast": true,
+    "no-extra-semi": true,
+    "no-inner-declarations": true,
+    "no-invalid-regexp": true,
+    "no-regex-spaces": true,
+    "no-unexpected-multiline": true,
+    "valid-typeof": true,
+    // https://github.com/buzinas/tslint-eslint-rules#stylistic-issues
+    "array-bracket-spacing": [
+      true,
+      "never"
+    ],
+    "block-spacing": [
+      true,
+      "always"
+    ],
+    "brace-style": [
+      true,
+      "1tbs",
+      {
+        "allowSingleLine": true
+      }
+    ],
+    "ter-func-call-spacing": [
+      true,
+      "never"
+    ],
+    "ter-indent": [
+      true,
+      2,
+      {
+        "MemberExpression": 0,
+        "FunctionDeclaration": {
+          "parameters": 1,
+          "body": 1
+        },
+        "FunctionExpression": {
+          "parameters": 1,
+          "body": 1
+        },
+        "CallExpression": {
+          "parameters": 1,
+          "body": 1
+        }
+      }
+    ],
+    "object-curly-spacing": [
+      true,
+      "never"
+    ],
+    "space-in-parens": [
+      true,
+      "never"
+    ],
+
+    // tslint-consistent-codestyle
+    "no-collapsible-if": true,
+    "no-return-undefined": true,
+    "no-unnecessary-else": true,
+    "no-var-before-return": true,
+    "object-shorthand-properties-first": true
+  },
+  "linterOptions": {
+    "exclude": [
+      "**/node_modules/**"
+    ]
+  }
+}
