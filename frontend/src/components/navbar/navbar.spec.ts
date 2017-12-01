@@ -61,7 +61,7 @@ describe('Navbar component', () => {
 
     it('should render correct about contents', async () => {
       await directiveTest.execute((vm) => {
-        expect(vm.$el.querySelector('div.about').textContent).to.equal('About');
+        expect(vm.$el.querySelector('div.about')!.textContent).to.equal('About');
       });
     });
   });
@@ -78,7 +78,7 @@ describe('Navbar component', () => {
 
     it('should render correct about contents', async () => {
       await directiveTest.execute((vm) => {
-        expect(vm.$el.querySelector('div.list').textContent).to.equal('List');
+        expect(vm.$el.querySelector('div.list')!.textContent).to.equal('List');
       });
     });
   });
