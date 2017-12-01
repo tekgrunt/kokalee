@@ -16,7 +16,7 @@
     "coverage:run": "cross-env NODE_ENV=development karma start karma.coverage.js",
     "dev": "webpack-dev-server --hot --inline",
     "git-pre-commit": "sort-package-json",
-    "lint": "tslint --project tsconfig.json --format stylish src/**/*.ts",
+    "lint": "tslint --project tsconfig.json --format stylish 'src/**/*.ts'",
     "serve": "http-server dist/ -g -o",
     "test": "cross-env NODE_ENV=development karma start karma.unit.js",
     "test:debug": "cross-env NODE_ENV=development karma start karma.debug.js",

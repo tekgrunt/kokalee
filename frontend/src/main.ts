@@ -1,10 +1,13 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import { makeHot, reload } from './util/hot-reload';
-import { createRouter } from './router';
+import {makeHot, reload} from './util/hot-reload';
+import {createRouter} from './router';
 
-const navbarComponent = () => import('./components/navbar').then(({ NavbarComponent }) => NavbarComponent);
-// const navbarComponent = () => import(/* webpackChunkName: 'navbar' */'./components/navbar').then(({ NavbarComponent }) => NavbarComponent);
+const navbarComponent = () => import('./components/navbar')
+.then(({NavbarComponent}) => NavbarComponent);
+// tslint:disable-next-line space-in-parens
+// const navbarComponent = () => import(/* webpackChunkName: 'navbar' */'./components/navbar')
+// .then(({NavbarComponent}) => NavbarComponent);
 
 import './sass/main.scss';
 
@@ -17,6 +20,7 @@ if (process.env.ENV === 'development' && module.hot) {
     module.hot.accept('./components/navbar', () => reload(navbarModuleId, (<any>require('./components/navbar')).NavbarComponent)));
 }
 
+// tslint:disable-next-line no-unused-expression
 new Vue({
   el: '#app-main',
   router: createRouter(),

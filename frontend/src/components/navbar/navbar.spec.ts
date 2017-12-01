@@ -1,12 +1,12 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Component from 'vue-class-component';
-import { spy, assert } from 'sinon';
-import { expect } from 'chai';
-import { ComponentTest, MockLogger } from '../../util/component-test';
-import { NavbarComponent } from './navbar';
+import {spy, assert} from 'sinon';
+import {expect} from 'chai';
+import {ComponentTest, MockLogger} from '../../util/component-test';
+import {NavbarComponent} from './navbar';
 
-let loggerSpy = spy();
+const loggerSpy = spy();
 
 @Component({
   template: require('./navbar.html')
@@ -24,23 +24,23 @@ describe('Navbar component', () => {
 
   before(() => {
     Vue.use(VueRouter);
-    directiveTest = new ComponentTest('<div><navbar></navbar><router-view>loading...</router-view></div>', { 'navbar': MockNavbarComponent });
+    directiveTest = new ComponentTest('<div><navbar></navbar><router-view>loading...</router-view></div>', {'navbar': MockNavbarComponent});
 
-    let homeComponent = { template: '<div class="home">Home</div>' };
-    let aboutComponent = { template: '<div class="about">About</div>' };
-    let listComponent = { template: '<div class="list">List</div>' };
+    const homeComponent = {template: '<div class="home">Home</div>'};
+    const aboutComponent = {template: '<div class="about">About</div>'};
+    const listComponent = {template: '<div class="list">List</div>'};
 
     router = new VueRouter({
       routes: [
-        { path: '/', component: homeComponent },
-        { path: '/about', component: aboutComponent },
-        { path: '/list', component: listComponent }
+        {path: '/', component: homeComponent},
+        {path: '/about', component: aboutComponent},
+        {path: '/list', component: listComponent}
       ]
     });
   });
 
   it('should render correct contents', async () => {
-    directiveTest.createComponent({ router: router });
+    directiveTest.createComponent({router: router});
 
     await directiveTest.execute((vm) => { // ensure Vue has bootstrapped/run change detection
       debugger;
@@ -51,10 +51,10 @@ describe('Navbar component', () => {
 
   describe('When clicking the about link', () => {
     beforeEach(async () => {
-      directiveTest.createComponent({ router: router });
+      directiveTest.createComponent({router: router});
 
       await directiveTest.execute((vm) => {
-        let anchor = <HTMLAnchorElement>vm.$el.querySelector('ul.nav li a[href="#/about"]');
+        const anchor = <HTMLAnchorElement>vm.$el.querySelector('ul.nav li a[href="#/about"]');
         anchor.click();
       });
     });
@@ -68,10 +68,10 @@ describe('Navbar component', () => {
 
   describe('When clicking the list link', () => {
     beforeEach(async () => {
-      directiveTest.createComponent({ router: router });
+      directiveTest.createComponent({router: router});
 
       await directiveTest.execute((vm) => {
-        let anchor = <HTMLAnchorElement>vm.$el.querySelector('ul.nav li a[href="#/list"]');
+        const anchor = <HTMLAnchorElement>vm.$el.querySelector('ul.nav li a[href="#/list"]');
         anchor.click();
       });
     });

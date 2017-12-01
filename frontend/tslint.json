@@ -13,13 +13,14 @@
       "variables-before-functions"
     ],
     // "no-any": {
-    //   "options:": true,
+    //   "options": true,
     //   "severity": "warn"
     // },
     "no-empty-interface": true,
     "no-inferrable-types": [
       true,
-      "ignore-params"
+      "ignore-params",
+      "ignore-properties"
     ],
     "no-internal-module": false,
     "no-reference": true,
@@ -54,7 +55,9 @@
       "debug"
     ],
     "no-construct": true,
-    "no-debugger": true,
+    "no-debugger": {
+      "severity": "warn"
+    },
     "no-duplicate-super": true,
     "no-duplicate-variable": true,
     "no-empty": false,

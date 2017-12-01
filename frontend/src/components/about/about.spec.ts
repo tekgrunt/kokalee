@@ -1,10 +1,10 @@
-import { spy, assert } from 'sinon';
-import { expect } from 'chai';
+import {spy, assert} from 'sinon';
+import {expect} from 'chai';
 import Component from 'vue-class-component';
-import { ComponentTest, MockLogger } from '../../util/component-test';
-import { AboutComponent } from './about';
+import {ComponentTest, MockLogger} from '../../util/component-test';
+import {AboutComponent} from './about';
 
-let loggerSpy = spy();
+const loggerSpy = spy();
 
 @Component({
   template: require('./about.html')
@@ -20,7 +20,7 @@ describe('About component', () => {
   let directiveTest: ComponentTest;
 
   beforeEach(() => {
-    directiveTest = new ComponentTest('<div><about></about></div>', { 'about': MockAboutComponent });
+    directiveTest = new ComponentTest('<div><about></about></div>', {'about': MockAboutComponent});
   });
 
   it('should render correct contents', async () => {
