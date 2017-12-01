@@ -15,9 +15,11 @@
     "coverage:remap": "remap-istanbul -i coverage/json/coverage-final.json -o coverage/html-ts -t html",
     "coverage:run": "cross-env NODE_ENV=development karma start karma.coverage.js",
     "dev": "webpack-dev-server --hot --inline",
-    "git-pre-commit": "sort-package-json",
+    "git-pre-commit": "lint-staged",
     "lint": "tslint --project tsconfig.json --format stylish 'src/**/*.ts'",
     "serve": "http-server dist/ -g -o",
+    "sort-package-json-and-add": "sort-package-json && git add package.json",
+    "sort-package-json-if-fully-staged": "unset GIT_DIR; git -c core.pager= ls-files -m package.json --error-unmatch || npm run sort-package-json-and-add",
     "test": "cross-env NODE_ENV=development karma start karma.unit.js",
     "test:debug": "cross-env NODE_ENV=development karma start karma.debug.js",
     "test:watch": "cross-env NODE_ENV=development karma start karma.unit.js --singleRun=false --auto-watch"
@@ -47,6 +49,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "favicons-webpack-plugin": "0.0.7",
     "file-loader": "^1.1.5",
+    "glob": "^7.1.2",
     "html-webpack-plugin": "^2.30.1",
     "http-server": "~0.10.0",
     "istanbul-instrumenter-loader": "~3.0.0",
@@ -93,5 +96,12 @@
   "engines": {
     "node": ">=6",
     "npm": ">=3"
+  },
+  "lint-staged": {
+    "linters": {
+      "package.json": [
+        "npm run sort-package-json-if-fully-staged"
+      ]
+    }
   }
 }

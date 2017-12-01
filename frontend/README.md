@@ -34,4 +34,7 @@ npm run build
 
 # clean the production build
 npm run clean
+
+# check for updates, unused dependencies
+npx npm-check
 ```
