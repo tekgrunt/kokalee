@@ -101,6 +101,9 @@
     "linters": {
       "package.json": [
         "npm run sort-package-json-if-fully-staged"
+      ],
+      "*.ts": [
+        "tslint --project tsconfig.json --format stylish"
       ]
     }
   }
