@@ -12,10 +12,10 @@
       "static-before-instance",
       "variables-before-functions"
     ],
-    "no-any": {
-      "options:": true,
-      "severity": "warn"
-    },
+    // "no-any": {
+    //   "options:": true,
+    //   "severity": "warn"
+    // },
     "no-empty-interface": true,
     "no-inferrable-types": [
       true,
@@ -51,11 +51,7 @@
     "no-bitwise": true,
     "no-console": [
       true,
-      "debug",
-      "info",
-      "time",
-      "timeEnd",
-      "trace"
+      "debug"
     ],
     "no-construct": true,
     "no-debugger": true,

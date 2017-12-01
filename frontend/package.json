@@ -1,6 +1,6 @@
 {
   "name": "kokalee-frontend",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "private": true,
   "description": "A Vue.js project",
   "author": "Kokalee",
@@ -16,7 +16,7 @@
     "coverage:run": "cross-env NODE_ENV=development karma start karma.coverage.js",
     "dev": "webpack-dev-server --hot --inline",
     "git-pre-commit": "sort-package-json",
-    "lint": "tslint src/**/*.ts",
+    "lint": "tslint --project tsconfig.json --format stylish src/**/*.ts",
     "serve": "http-server dist/ -g -o",
     "test": "cross-env NODE_ENV=development karma start karma.unit.js",
     "test:debug": "cross-env NODE_ENV=development karma start karma.debug.js",

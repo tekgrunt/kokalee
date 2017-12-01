@@ -1,7 +1,7 @@
-import Vue, { Component } from 'vue';
-import { SinonSpy } from 'sinon';
+import Vue, {Component} from 'vue';
+import {SinonSpy} from 'sinon';
 import merge from 'lodash.merge';
-import { ILogger } from './log';
+import {ILogger} from './log';
 
 export interface IComponents {
   [key: string]: Component;
@@ -15,7 +15,7 @@ export class ComponentTest {
   }
 
   public createComponent(createOptions?: any): void {
-    let options = {
+    const options = {
       template: this.template,
       components: this.components
     };

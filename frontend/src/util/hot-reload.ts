@@ -1,4 +1,4 @@
-import Vue, { Component } from 'vue';
+import Vue, {Component} from 'vue';
 import * as api from 'vue-hot-reload-api';
 
 export async function makeHot(id: string, componentLoader: () => Promise<Component>, acceptFunc: void) {
