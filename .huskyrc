@@ -1,5 +1,5 @@
 {
   "hooks": {
-    "pre-commit": "cd frontend; npm run pre-commit"
+    "pre-commit": "cd frontend; npm run git-pre-commit"
   }
 }

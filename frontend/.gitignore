@@ -1,1 +1,8 @@
-/node_modules
+.DS_Store
+node_modules/
+dist/
+coverage/
+src/css
+src/**/*.js
+src/**/*.map
+*.log

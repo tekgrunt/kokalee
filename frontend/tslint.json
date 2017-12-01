@@ -21,6 +21,7 @@
       true,
       "ignore-params"
     ],
+    "no-internal-module": false,
     "no-reference": true,
     "prefer-for-of": true,
     "typedef-whitespace": [

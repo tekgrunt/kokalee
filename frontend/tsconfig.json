@@ -1,11 +1,21 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
-    "target": "es5",
     "strict": true,
     "module": "es2015",
+    "lib": [
+      "dom",
+      "es5",
+      "es2015",
+      "es2015.promise"
+    ],
     "moduleResolution": "node",
-    "strictFunctionTypes": true,
-    "strictNullChecks": true
+    "target": "es5",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true
+    // "strictFunctionTypes": true,
+    // "strictNullChecks": true
   }
 }
