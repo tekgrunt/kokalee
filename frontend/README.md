@@ -38,6 +38,25 @@ npm run clean
 # check for updates, unused dependencies
 npx npm-check
 ```
+This is the web client for the Kokalee project.
 
-hoodie store documentation: 
+We are using a variety of technologies to make this all work.
+
+Hoodie: http://hood.ie/
+Vue: https://vuejs.org/
+Webpack: https://webpack.js.org/
+TypeScript: https://www.typescriptlang.org/
+Sass: http://sass-lang.com/
+And more!
+
+The list is long but I think those are the main things to be aware of
+before jumping into the project. Hoodie is probably the technology that will
+seem the most foreign and it is not a bad idea to go read about it, progressive
+web apps in general and PouchDB & CouchDB (all of this is used to create the
+"offline first" paradigm we are trying to subscribe to).
+
+hoodie store documentation:
 https://github.com/hoodiehq/hoodie-store-client
+
+There is more but that is it for now... feel free to add to this file if you
+see something that is missing and that needs to be included :)
