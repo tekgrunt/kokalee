@@ -8,12 +8,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">vue-webpack-typescript</a>
+      <a class="navbar-brand" href="#">Kokalee Technologies</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <collapse id="navbar" class="navbar-collapse" v-model="showNavbar">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav" id="navbar-nav">
         <li v-for="link in links" v-bind:class="{'active' : $route.path == link.path}">
           <router-link v-bind:to="link.path">{{link.name}}</router-link>
         </li>

@@ -1,11 +1,10 @@
-$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+// Core variables and mixins
+@import "variables.scss";
+//@import "mixins.scss";
 
-@import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// Global CSS
+@import "global.scss";
 
-html, body, #app-main {
-  height: 100%;
-}
-
-.content {
-  margin-top: 50px;
-}
+// Components
+@import "sidemenu";
+@import "navbar";

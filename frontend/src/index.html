@@ -1,17 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lan.g="en">
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>vue-upgrade4</title>
+  <title>Kokalee Technologies</title>
 </head>
 
 <body>
   <div id="app-main">
-    <navbar :inverted="false"></navbar>
-    <router-view>loading...</router-view>
+    <div class="container">
+      <div clas="row">
+        <div class="col-sm-12">
+          <navbar :inverted="false">test</navbar>
+        </div>
+      </div>
+      <div class="row">
+        <div id="sidemenu" class="col-sm-1"><sidemenu></sidemenu></div>
+        <div class="col-sm-10"><router-view>loading...</router-view></div>
+      </div>
+    </div>
   </div>
 </body>
 

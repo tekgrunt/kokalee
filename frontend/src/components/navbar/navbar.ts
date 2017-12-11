@@ -1,7 +1,8 @@
 import {Collapse, Dropdown} from 'uiv';
 import {Component, Vue, Watch} from 'vue-property-decorator';
-import {Link} from './link';
+import {Link} from '../util/link';
 import {Logger} from '../../util/log';
+import hoodie from '../../util/hoodie'
 
 @Component({
   template: require('./navbar.html'),
@@ -9,6 +10,7 @@ import {Logger} from '../../util/log';
     collapse: Collapse,
   }
 })
+
 export class NavbarComponent extends Vue {
 
   protected logger: Logger;

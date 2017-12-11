@@ -9,6 +9,9 @@ const navbarComponent = () => import('./components/navbar')
 // const navbarComponent = () => import(/* webpackChunkName: 'navbar' */'./components/navbar')
 // .then(({NavbarComponent}) => NavbarComponent);
 
+const sidemenuComponent = () => import('./components/sidemenu')
+.then(({SideMenuComponent}) => SideMenuComponent);
+
 import './sass/main.scss';
 
 if (process.env.ENV === 'development' && module.hot) {
@@ -25,6 +28,7 @@ new Vue({
   el: '#app-main',
   router: createRouter(),
   components: {
-    'navbar': navbarComponent
+    'navbar': navbarComponent,
+    'sidemenu': sidemenuComponent
   }
 });
