@@ -1,8 +1,17 @@
 #sidemenu {
+ background: #eee;
+ height:100vh;
 
+  ul {
+    margin-top: 120px;
+    padding-left: 0px;
+    list-style: none;
+  }
+  li {
+    margin-top: 8px;
+  }
 }
 
-
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #sidemenu {display:none;}
 }
