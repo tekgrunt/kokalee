@@ -1,5 +1,8 @@
+
 import {Collapse, Dropdown} from 'uiv';
-import {Component, Vue, Watch} from 'vue-property-decorator';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import {Watch} from 'vue-property-decorator';
 import {Link} from '../util/link';
 import {Logger} from '../../util/log';
 import hoodie from '../../util/hoodie'

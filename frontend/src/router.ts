@@ -22,7 +22,7 @@ if (process.env.ENV === 'development' && module.hot) {
     module.hot.accept('./components/home', () => reload(homeModuleId, (<any>require('./components/home')).HomeComponent)));
 
   makeHot(aboutModuleId, aboutComponent,
-    module.hot.accept('./components/about', () => reload(aboutModuleId, (<any>require('./components/about')).AboutComponent)));
+    module.hot.accept('./components/about', () => reload(aboutModuleId, (<any>require('./components/about')).default)));
 
   makeHot(listModuleId, listComponent,
     module.hot.accept('./components/list', () => reload(listModuleId, (<any>require('./components/list')).ListComponent)));

@@ -17,6 +17,7 @@
     "dev": "run-p dev:*",
     "dev:hoodie": "hoodie --port 8084 --public dist",
     "dev:vue": "webpack-dev-server --hot --inline",
+    "dev:vuetype": "vuetype --watch src/components",
     "git-pre-commit": "lint-staged",
     "postinstall": "cd ..; npm install",
     "lint": "tslint --project tsconfig.json --format stylish 'src/**/*.ts'",
@@ -34,11 +35,12 @@
     "bootstrap": "^3.3.7",
     "hoodie": "^28.2.2",
     "pouchdb": "^6.3.4",
+    "ts-loader": "^3.2.0",
     "uiv": "^0.14.1",
-    "vue": "~2.5.8",
-    "vue-class-component": "~6.1.0",
-    "vue-property-decorator": "~6.0.0",
-    "vue-router": "~3.0.1"
+    "vue": "^2.5.13",
+    "vue-class-component": "^6.1.2",
+    "vue-router": "~3.0.1",
+    "vue-template-compiler": "^2.5.13"
   },
   "devDependencies": {
     "@types/mocha": "~2.2.44",
@@ -100,7 +102,9 @@
     "url-loader": "^0.6.2",
     "vue-hot-reload-api": "^2.2.4",
     "vue-loader": "^13.5.0",
+    "vue-property-decorator": "^6.0.0",
     "vue-ts-loader": "0.0.3",
+    "vuetype": "github:forivall/vuetype#vue-cc-6",
     "webpack": "~3.8.1",
     "webpack-dev-server": "~2.9.4"
   },
