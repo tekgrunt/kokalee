@@ -26,17 +26,20 @@ let config = {
       enforce: 'pre',
       loader: 'tslint-loader'
     }, {
+      test: /\.vue$/,
+      exclude: /node_modules/,
+      loader: 'vue-loader'
+    }, {
       test: /\.ts$/,
       exclude: /node_modules/,
-      loader: 'awesome-typescript-loader'
+      loader: 'ts-loader',
+      options: {
+        appendTsSuffixTo: [/\.vue$/]
+      }
     }, {
       test: /\.tsx$/,
       exclude: /node_modules/,
       loader: 'vue-ts-loader'
-    }, {
-      test: /\.vue$/,
-      exclude: /node_modules/,
-      loader: 'vue-loader'
     }, {
       test: /\.html$/,
       loader: 'raw-loader',
