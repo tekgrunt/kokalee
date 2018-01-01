@@ -17,8 +17,15 @@
         </div>
       </div>
       <div class="row">
-        <div id="sidemenu" class="col-sm-2"><sidemenu></sidemenu></div>
-        <div class="col-sm-10"><router-view>loading...</router-view></div>
+        <div id="sidemenu" class="col-sm-2">
+          <div class="content">
+            <login></login>
+          </div>
+          <sidemenu></sidemenu>
+        </div>
+        <div class="col-sm-10">
+          <router-view>loading...</router-view>
+        </div>
       </div>
     </div>
   </div>

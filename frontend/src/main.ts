@@ -11,6 +11,8 @@ const navbarComponent = () => import('./components/navbar')
 
 const sidemenuComponent = () => import('./components/sidemenu')
 .then(({SideMenuComponent}) => SideMenuComponent);
+const login = () => import('./components/login')
+.then(({default: c}) => c);
 
 import './sass/main.scss';
 
@@ -28,6 +30,7 @@ new Vue({
   el: '#app-main',
   router: createRouter(),
   components: {
+    login,
     'navbar': navbarComponent,
     'sidemenu': sidemenuComponent
   }
