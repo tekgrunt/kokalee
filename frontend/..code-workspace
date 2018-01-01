@@ -3,6 +3,7 @@
   {
     "path": "."
   },
+  {"path": "../sandbox-vue-file"}, 
   {"path": ".."} 
 ]
 }
