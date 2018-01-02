@@ -1,5 +1,5 @@
 <template>
-  <form @submit="login()">
+  <form @submit="_login()">
     <input type="text" name="username" v-model="username">
     <input type="password" name="password" v-model="password">
     <button type="submit">Login</button>
@@ -15,13 +15,13 @@ import Component from 'vue-class-component';
   props: [
     'login'
   ],
-  data: {
+  data: () => ({
     username: '',
     password: ''
-  }
+  })
 })
 export default class LoginUi extends Vue {
-  login() {
+  _login() {
     console.log('login')
     if (typeof this.$props.login === 'function') {
       Promise.resolve(this.$props.login(this.$data))
