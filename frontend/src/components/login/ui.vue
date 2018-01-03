@@ -1,5 +1,5 @@
 <template>
-  <form @submit="_login()">
+  <form @submit.prevent="_login()">
     <input type="text" name="username" v-model="username">
     <input type="password" name="password" v-model="password">
     <button type="submit">Login</button>
@@ -22,13 +22,12 @@ import Component from 'vue-class-component';
 })
 export default class LoginUi extends Vue {
   _login() {
-    console.log('login')
     if (typeof this.$props.login === 'function') {
       Promise.resolve(this.$props.login(this.$data))
       .then(() => {
-        console.log('TODO: success');
+        console.log('TODO: show success ui');
       }).catch((err) => {
-        console.log('TODO: err');
+        console.log('TODO: show err ui');
       })
       ;
     }

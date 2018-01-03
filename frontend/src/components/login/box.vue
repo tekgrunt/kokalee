@@ -1,5 +1,5 @@
 <template>
-  <ui login="login"></ui>
+  <ui :login="login"></ui>
 </template>
 
 <script lang="ts">
