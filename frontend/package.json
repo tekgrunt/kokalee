@@ -34,7 +34,6 @@
     "axios": "~0.17.1",
     "bootstrap": "^3.3.7",
     "hoodie": "^28.2.2",
-    "onsenui": "^2.8.3",
     "pouchdb": "^6.3.4",
     "ts-loader": "^3.2.0",
     "uiv": "^0.14.1",
