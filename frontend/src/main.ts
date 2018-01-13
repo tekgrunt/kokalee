@@ -2,6 +2,9 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import {makeHot, reload} from './util/hot-reload';
 import {createRouter} from './router';
+import VueOnsen from 'vue-onsenui';
+
+Vue.use(VueOnsen);
 
 const navbarComponent = () => import('./components/navbar')
 .then(({NavbarComponent}) => NavbarComponent);
@@ -15,6 +18,8 @@ const login = () => import('./components/login')
 .then(({default: c}) => c);
 
 import './sass/main.scss';
+import 'onsenui/css/onsenui.css';
+import 'onsenui/css/onsen-css-components.css';
 
 if (process.env.ENV === 'development' && module.hot) {
   const navbarModuleId = './components/navbar';
