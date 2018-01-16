@@ -1,5 +1,5 @@
 <template>
-  <form v-if="user">
+  <form v-if="user" @submit.prevent="_logout()">
     {{ user.username }} is currently logged in.
     <button type="submit">Logout</button>
   </form>
@@ -8,22 +8,16 @@
     <input type="text" name="username" v-model="credentials.username">
     <input type="password" name="password" v-model="credentials.password">
     <button type="submit">Login</button>
-    <button>Create Account</button>
+    <button @click.prevent="_signup">Create Account</button>
   </form>
 </template>
 
 <script lang="ts">
 
 import Vue from 'vue'
-import Component from 'vue-class-component';
+import {Component, Prop, Watch} from 'vue-property-decorator'
 
 @Component({
-  props: {
-    login: {type: Function},
-    signup: {type: Function},
-    logout: {type: Function},
-    user: {default: null}
-  },
   data: function (this: LoginUi) {
     return {
       credentials: {
@@ -35,10 +29,27 @@ import Component from 'vue-class-component';
   }
 })
 export default class LoginUi extends Vue {
-  user: {id: string, session: string, username: string}
-  _onError = (err) => {
-    this.$data.error = err;
+  @Prop() login: Function;
+  @Prop() signup: Function
+  @Prop() logout: Function
+  @Prop() user: {id: string, session: string, username: string} | null = null
+
+  error = null
+
+  constructor() {
+    super()
+    // this._onError = this._onError.bind(this)
   }
+
+  @Watch('user')
+  onUserChanged() {
+    console.log('got user in ui')
+  }
+
+  _onError(err) {
+    this.error = err;
+  }
+
   _login() {
     if (!(typeof this.$props.login === 'function')) return;
 

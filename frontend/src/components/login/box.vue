@@ -1,11 +1,14 @@
 <template>
+  <div>
   <ui :login="login" :signup="signup" :logout="logout" :user="user"></ui>
+    {{user|json}}
+    </div>
 </template>
 
 <script lang="ts">
-
+// TODO: use vue-inject instead of a container component
 import Vue, {ComponentOptions} from 'vue'
-import Component from 'vue-class-component';
+import {Component, Prop, Watch} from 'vue-property-decorator';
 import Ui from './ui.vue';
 import hoodie from '../../util/hoodie'
 // import {Logger} from '../util/log';
@@ -15,35 +18,66 @@ export interface User {
   password: string
 }
 
+interface LoginData {
+  user: {
+    createdAt: string,
+    id: string
+  }
+}
+
+type Nullable<T> = {
+  [K in keyof T]: T[K] | null
+}
+
 @Component({
   components: {
     Ui
   },
-  data: () => ({
-    user: null
-  })
+  filters: {
+    json(o) {
+      return JSON.stringify(o)
+    }
+  }
 } as ComponentOptions<Vue>)
 export default class LoginContainer extends Vue {
-  constructor() {
-    super();
-    console.log('get user')
+  user: User | null
+
+  data() {
+    return {
+      user: null
+    }
+  }
+
+  created() {
     hoodie.account.get().then((user) => {
-      console.log('got user', user)
       if (user.session) {
-        this.$data.user = user
+        this.user = user
       }
     }).catch((err) => {
       console.log(err)
     })
   }
+
   login(credentials: User) {
     return hoodie.account.signIn(credentials)
+    .then(() => {
+      return hoodie.account.get()
+    })
+    .then((user) => {
+      this.user = user
+    })
   }
   signup(credentials: User) {
     return hoodie.account.signUp(credentials)
+    .then(() => {
+      return this.login(credentials);
+    })
   }
   logout() {
-    return hoodie.account.signOut()
+    return hoodie.account.signOut().then((result) => {
+      console.log(result);
+      this.user = null;
+    })
   }
 }
 </script>

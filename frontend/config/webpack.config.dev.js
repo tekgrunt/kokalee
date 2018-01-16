@@ -54,7 +54,13 @@ webpackConfig.devServer = {
     poll: 1000
   },
   contentBase: './src',
-  open: true
+  open: true,
+  bonjour: true, // for .local domains
+  proxy: {
+    '/hoodie': {
+      target: 'http://localhost:8084'
+    }
+  }
 };
 
 module.exports = webpackConfig;
