@@ -2,6 +2,8 @@
 
 > A Vue.js project
 
+See https://github.com/Microsoft/TypeScript-Vue-Starter for info on getting started with vue + typescript
+
 ## Build Setup
 
 ``` bash
