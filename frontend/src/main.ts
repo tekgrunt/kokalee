@@ -14,12 +14,13 @@ const navbarComponent = () => import('./components/navbar')
 
 const sidemenuComponent = () => import('./components/sidemenu')
 .then(({SideMenuComponent}) => SideMenuComponent);
-const login = () => import('./components/login')
+const login = () => import('./components/login.vue')
 .then(({default: c}) => c);
 
 import './sass/main.scss';
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
+import {AppComponent} from './util/types';
 
 if (process.env.ENV === 'development' && module.hot) {
   const navbarModuleId = './components/navbar';
@@ -30,7 +31,11 @@ if (process.env.ENV === 'development' && module.hot) {
     module.hot.accept('./components/navbar', () => reload(navbarModuleId, (<any>require('./components/navbar')).NavbarComponent)));
 }
 
-// tslint:disable-next-line no-unused-expression
+declare global {
+  const app: AppComponent
+}
+
+(window as any).app =
 new Vue({
   el: '#app-main',
   router: createRouter(),
