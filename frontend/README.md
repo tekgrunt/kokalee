@@ -40,6 +40,9 @@ npm run clean
 # check for updates, unused dependencies
 npx npm-check
 ```
+
+## Description
+
 This is the web client for the Kokalee project.
 
 We are using a variety of technologies to make this all work.
@@ -49,6 +52,7 @@ Vue: https://vuejs.org/
 Webpack: https://webpack.js.org/
 TypeScript: https://www.typescriptlang.org/
 Sass: http://sass-lang.com/
+CouchDB: https://couchdb.apache.org/
 And more!
 
 The list is long but I think those are the main things to be aware of
@@ -62,3 +66,13 @@ https://github.com/hoodiehq/hoodie-store-client
 
 There is more but that is it for now... feel free to add to this file if you
 see something that is missing and that needs to be included :)
+
+## Database Configuration
+
+By default, Hoodie will store data in files using PouchDB. To hook it up to a real CouchDB instance, you need to create
+a JSON-formatted `.hoodierc` file in the current directory. Consult Hoodie's official
+[Configuration](http://docs.hood.ie/en/latest/guides/configuration.html) documentation to learn about the options
+available. To get started quickly, copy the contents of `.hoodierc-example.json` to `.hoodierc` and adjust the options
+there to match your own environment.
+
+NOTE: The `.hoodierc` file should never be committed to version control since it is specific to your local environment.

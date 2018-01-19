@@ -1,0 +1,6 @@
+{
+  "dbUrl": "http://localhost:5984/kokalee",
+  "dbUrlUsername": "user",
+  "dbUrlPassword": "password",
+  "name": "kokalee-frontend"
+}
