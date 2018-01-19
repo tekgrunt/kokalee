@@ -7,7 +7,7 @@ var webpack = require('webpack'),
 webpackConfig.module.rules = [{
     test: /\.ts$/,
     exclude: /node_modules/,
-    loader: 'awesome-typescript-loader',
+    loader: 'typescript-loader',
     query: {
       compilerOptions: {
         inlineSourceMap: true,
