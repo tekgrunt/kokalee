@@ -40,6 +40,9 @@ npm run clean
 # check for updates, unused dependencies
 npx npm-check
 ```
+
+## Description
+
 This is the web client for the Kokalee project.
 
 We are using a variety of technologies to make this all work.
@@ -49,6 +52,7 @@ Vue: https://vuejs.org/
 Webpack: https://webpack.js.org/
 TypeScript: https://www.typescriptlang.org/
 Sass: http://sass-lang.com/
+CouchDB: https://couchdb.apache.org/
 And more!
 
 The list is long but I think those are the main things to be aware of
@@ -62,3 +66,28 @@ https://github.com/hoodiehq/hoodie-store-client
 
 There is more but that is it for now... feel free to add to this file if you
 see something that is missing and that needs to be included :)
+
+## Database Configuration
+
+By default, Hoodie will store data in the local file system using PouchDB (i.e. in the `.hoodie/data` directory. To hook
+it up to a real CouchDB instance, you need to create a JSON-formatted `.hoodierc` file in the current directory. Consult
+Hoodie's official [Configuration](http://docs.hood.ie/en/latest/guides/configuration.html) documentation to learn about
+the options available. To get started quickly, copy the contents of `.hoodierc-example.json` to `.hoodierc` and adjust
+the options there to match your own environment.
+
+**NOTE**: The `.hoodierc` file should never be committed to version control since it contains configuration specific to
+your local environment.
+
+Ensure that an empty database matching the name specified in the `dbUrl` configuration option already exists in CouchDB.
+
+Bear in mind that the user specified by the `dbUrlUsername` and `dbUrlPassword` configuration options must be a CouchDB
+[administrator](http://docs.couchdb.org/en/latest/config/auth.html#server-administrators) user so that Hoodie can create
+its own databases for managing authentication/authorization and various other metadata. See Hoodie's
+[documentation](http://docs.hood.ie/en/latest/guides/deployment.html#couchdb) on deploying with CouchDB for more
+information.
+
+The documentation on [How Hoodie Works](http://docs.hood.ie/en/latest/about/how-hoodie-works.html) may also be helpful
+in understanding how Hoodie interacts with CouchDB.
+
+See [Set up CouchDB on Raspberry Pi](https://github.com/tekgrunt/kokalee/wiki/Set-up-CouchDB-on-Raspberry-Pi) in the
+project's wiki for information specifically on installing and configuring CouchDB on Raspberry Pi hardware.

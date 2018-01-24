@@ -5,7 +5,7 @@
   "description": "A Vue.js project",
   "author": "Kokalee",
   "scripts": {
-    "build": "cross-env NODE_ENV=production npm run clean && npm run test && npm run compile",
+    "build": "cross-env NODE_ENV=production npm run clean && npm run compile",
     "ci:jenkins": "karma --env=jk start karma.coverage.js && npm run coverage:remap",
     "ci:teamcity": "karma --env=tc start karma.coverage.js && npm run coverage:remap",
     "clean": "rimraf dist && rimraf coverage",
