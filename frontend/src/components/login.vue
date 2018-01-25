@@ -1,14 +1,14 @@
 <template>
   <form v-if="user" @submit.prevent="logout()">
     {{ user.username }} is currently logged in.
-    <button type="submit">Logout</button>
+    <button type="submit" class="btn btn-success">Logout</button>
   </form>
-  <form v-else @submit.prevent="login(credentials)">
+  <form v-else @submit.prevent="login(credentials)" class="input-group">
     <div>{{error}}</div>
-    <input type="text" name="username" v-model="credentials.username">
-    <input type="password" name="password" v-model="credentials.password">
-    <button type="submit">Login</button>
-    <button @click.prevent="signup(credentials)">Create Account</button>
+    <input type="text" name="username" v-model="credentials.username" class="form-control" placeholder="Username">
+    <input type="password" name="password" v-model="credentials.password" class="form-control" placeholder="Password">
+    <button type="submit" class="btn btn-success">Login</button>
+    <button @click.prevent="signup(credentials)" class="btn btn-success">Create Account</button>
   </form>
 </template>
 
@@ -86,3 +86,7 @@ export default class LoginUi extends Vue {
 }
 
 </script>
+
+<style lang="scss">  
+  
+</style>
