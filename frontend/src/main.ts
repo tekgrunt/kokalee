@@ -16,6 +16,8 @@ const sidemenuComponent = () => import('./components/sidemenu')
 .then(({SideMenuComponent}) => SideMenuComponent);
 const login = () => import('./components/login.vue')
 .then(({default: c}) => c);
+const info = () => import('./components/info.vue')
+
 
 import './sass/main.scss';
 import 'onsenui/css/onsenui.css';
@@ -41,6 +43,7 @@ new Vue({
   router: createRouter(),
   components: {
     login,
+    info,
     'navbar': navbarComponent,
     'sidemenu': sidemenuComponent
   }
