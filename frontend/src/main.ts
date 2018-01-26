@@ -17,6 +17,7 @@ const sidemenuComponent = () => import('./components/sidemenu')
 const login = () => import('./components/login.vue')
 .then(({default: c}) => c);
 const info = () => import('./components/info.vue')
+// .then(({InfoComponent}) => InfoComponent);
 
 
 import './sass/main.scss';
