@@ -1,7 +1,10 @@
-import Vue from 'vue';
+import Vue from 'vue'
+import BootstrapVue from 'bootstrap-vue'
 import VueRouter from 'vue-router';
 import {makeHot, reload} from './util/hot-reload';
 import {createRouter} from './router';
+
+Vue.use(BootstrapVue);
 
 const navbarComponent = () => import('./components/navbar')
 .then(({NavbarComponent}) => NavbarComponent);
