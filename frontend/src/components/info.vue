@@ -1,5 +1,6 @@
 <template lang="html">
   <div class="content">
+    <h2>Safety Guidelines</h2>
     <div id="accordion">
       <div class="card">
         <div class="card-header" id="headingOne">
