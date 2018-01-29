@@ -1,10 +1,9 @@
 #sidemenu {
   background: #eee;
-  height:100vh;
+  height: 100vh;
 
-  :first-child {
-    margin-top: 20px;
-  }
+  padding-top: $navbar-height + 20px;
+
 
   ul {
     padding-left: 0px;
