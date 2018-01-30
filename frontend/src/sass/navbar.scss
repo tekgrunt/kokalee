@@ -1,12 +1,4 @@
-@media (min-width: 768px) {
-  .navbar {
-    height: 100px;
-  }
-  .navbar-nav > li > a {
-    display: none;
-  }
-}
 
-.navbar-toggle {
-  margin-right: 30px;
+.navbar-toggler {
+  margin-right: 10px;
 }

@@ -15,14 +15,7 @@ import hoodie from '../../util/hoodie'
 })
 
 export class NavbarComponent extends Vue {
-
   protected logger: Logger;
-
-  inverted: boolean = true; // default value
-
-  showNavbar = false;
-
-  object: { default: string } = {default: 'Default object property!'}; // objects as default values don't need to be wrapped into functions
 
   links: Link[] = [
     new Link('Home', '/'),
@@ -37,6 +30,5 @@ export class NavbarComponent extends Vue {
 
   mounted() {
     if (!this.logger) this.logger = new Logger();
-    this.$nextTick(() => this.logger.info(this.object.default));
   }
 }
