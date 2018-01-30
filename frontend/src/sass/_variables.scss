@@ -27,13 +27,13 @@ $kokalee-gray-1:  #716C66 !default;
 $kokalee-gray-2:  #4F4B47 !default;
 $kokalee-dark:    #34322D !default;
 
-$brand-primary:       $kokalee-brown !default;
-$brand-secondary:     $kokalee-green !default;
-$brand-success:       $kokalee-green !default;
-$brand-info:          $cyan !default;
-$brand-warning:       $yellow !default;
-$brand-danger:        $red !default;
-$brand-light:         $gray-100 !default;
-$brand-dark:          $gray-800 !default;
+$primary:       $kokalee-brown !default;
+$secondary:     $kokalee-gray-1 !default;
+$success:       $kokalee-green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $gray-100 !default;
+$dark:          $kokalee-dark !default;
 
 $navbar-height: 56px;
