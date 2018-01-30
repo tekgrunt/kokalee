@@ -10,12 +10,9 @@
 
 <body>
   <div id="app-main">
+    <navbar></navbar>
     <div class="container">
-      <div clas="row">
-        <div class="col-sm-12">
-          <navbar :inverted="false">test</navbar>
-        </div>
-      </div>
+
       <div class="row">
         <div id="sidemenu" class="col-sm-3">
           <div class="content">
@@ -23,7 +20,7 @@
           </div>
           <sidemenu></sidemenu>
         </div>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
           <router-view>loading...</router-view>
         </div>
       </div>

@@ -1,16 +1,15 @@
-$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
-
-@import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "~bootstrap/scss/bootstrap.scss";
 
 html, body, #app-main {
   height: 100%;
 }
 
-.content {
-  margin-top: 100px;
-}
-
 .container {
   margin-left: 0px;
   margin-right: 0px;
+
+  &.content {
+    margin-top: $navbar-height + 20px
+
+  }
 }
