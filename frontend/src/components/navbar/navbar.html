@@ -1,23 +1,17 @@
-<nav class="navbar navbar-default navbar-fixed-top" v-bind:class="{'navbar-inverse' : inverted}">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" @click="showNavbar=!showNavbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Kokalee Technologies</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <collapse id="navbar" class="navbar-collapse" v-model="showNavbar">
-      <ul class="nav navbar-nav" id="navbar-nav">
-        <li v-for="link in links" v-bind:class="{'active' : $route.path == link.path}">
-          <router-link v-bind:to="link.path">{{link.name}}</router-link>
-        </li>
-      </ul>
-    </collapse>
+<b-navbar toggleable type="dark" variant="dark" fixed="top">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div>
+    <b-navbar-toggle target="navbar">
+    </b-navbar-toggle>
+    <b-navbar-brand href="#">Kokalee Technologies</b-navbar-brand>
   </div>
-</nav>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <b-collapse is-nav id="navbar">
+    <b-navbar-nav>
+      <b-nav-item v-for="link in links" :key="link.path" v-bind:class="{'active' : $route.path == link.path}">
+        <router-link v-bind:to="link.path">{{link.name}}</router-link>
+      </b-nav-item>
+    </b-navbar-nav>
+  </b-collapse>
+</b-navbar>

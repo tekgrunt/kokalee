@@ -1,10 +1,10 @@
-import Vue from 'vue';
+import Vue from 'vue'
+import BootstrapVue from 'bootstrap-vue'
 import VueRouter from 'vue-router';
 import {makeHot, reload} from './util/hot-reload';
 import {createRouter} from './router';
-import VueOnsen from 'vue-onsenui';
 
-Vue.use(VueOnsen);
+Vue.use(BootstrapVue);
 
 const navbarComponent = () => import('./components/navbar')
 .then(({NavbarComponent}) => NavbarComponent);
@@ -21,8 +21,6 @@ const info = () => import('./components/info.vue')
 
 
 import './sass/main.scss';
-import 'onsenui/css/onsenui.css';
-import 'onsenui/css/onsen-css-components.css';
 import {AppComponent} from './util/types';
 
 if (process.env.ENV === 'development' && module.hot) {
