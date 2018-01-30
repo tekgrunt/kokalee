@@ -43,7 +43,6 @@
     "uiv": "^0.14.5",
     "vue": "^2.5.13",
     "vue-class-component": "^6.1.2",
-    "vue-onsenui": "^2.5.0",
     "vue-router": "~3.0.1",
     "vue-template-compiler": "^2.5.13"
   },
