@@ -3,7 +3,6 @@
       <b-col cols="12">
         <div class="text-center">
           <h2>Guidelines for Tree Planters</h2>
-          <h6>For more details, see the  <a href="https://www.for.gov.bc.ca/hfp/silviculture/planting/minsafe/MINSAFEE/MSGHOME.HTM">Ministry of Forests manual.</a></h6>
         </div>
         <b-card>
           <b-link v-on:click="showOne = !showOne" style="font-size: 20px;">
@@ -157,6 +156,7 @@
             </div>
           </div>
         </b-card>
+        <p class="text-center" style="padding-top: 5px;">For more details, see the Ministry of Forests <a href="https://www.for.gov.bc.ca/hfp/silviculture/planting/minsafe/MINSAFEE/MSGHOME.HTM">manual.</a></p>
       </b-col>
     </b-row>
 </template>
