@@ -3,13 +3,19 @@
     {{ user.username }} is currently logged in.
     <button type="submit" class="btn btn-success">Logout</button>
   </form>
-  <form v-else @submit.prevent="login(credentials)" class="input-group">
-    <div>{{error}}</div>
-    <input type="text" name="username" v-model="credentials.username" class="form-control" placeholder="Username">
-    <input type="password" name="password" v-model="credentials.password" class="form-control" placeholder="Password">
-    <button type="submit" class="btn btn-success">Login</button>
-    <button @click.prevent="signup(credentials)" class="btn btn-success">Create Account</button>
-  </form>
+  <div v-else>
+    <b-btn variant="success" @click="isSignup = false" v-b-modal.login-modal>Login</b-btn>
+    <b-btn variant="success" @click="isSignup = true" v-b-modal.login-modal>Create Account</b-btn>
+
+    <!-- Modal Component -->
+    <b-modal @ok="submit()" ref="modal" id="login-modal" :title="isSignup ? 'Create Account' : 'Login'">
+      <form @submit.prevent="submit(); $refs.modal.hide()" class="input-group">
+        <div>{{error}}</div>
+        <b-form-input type="text" name="username" v-model="credentials.username" placeholder="Username"></b-form-input>
+        <b-form-input type="password" name="password" v-model="credentials.password" placeholder="Password"></b-form-input>
+      </form>
+    </b-modal>
+  </div>
 </template>
 
 <script lang="ts">
@@ -36,6 +42,7 @@ export default class LoginUi extends Vue {
   user: User | null = null
   credentials: UserCredentials = {username: '', password: ''}
   error = null
+  isSignup = false
 
   constructor() {
     super()
@@ -62,6 +69,16 @@ export default class LoginUi extends Vue {
     console.error(err.stack || err)
   }
 
+  submit() {
+    if (this.isSignup) {
+      this.signup(this.credentials);
+    } else {
+      this.login(this.credentials);
+    }
+  }
+
+
+
   login(credentials: UserCredentials) {
     hoodie.account.signIn(credentials)
     .then(() => {
@@ -76,6 +93,7 @@ export default class LoginUi extends Vue {
     .then(() => {
       return this.login(credentials);
     }).catch(this._onError)
+    // TODO: show a flash / toast that account creation was successful
   }
   logout() {
     hoodie.account.signOut().then((result) => {
