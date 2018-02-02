@@ -2,7 +2,7 @@
     <b-row style="margin-top: 100px;">
       <b-col cols="12">
         <div class="text-center">
-          <h2>Guidelines for Tree Planters</h2>
+          <h2>Forestry Guidelines</h2>
         </div>
         <b-card>
           <b-link v-on:click="showOne = !showOne" style="font-size: 20px;">
@@ -71,7 +71,6 @@
               </details>
               <details>
                 <summary>Food preparation, handling, and storage</summary>
-                <p>Follow guidelines as outlined ________. </p>
                 <ul>
                   <li>hand washing facilities must be provided for food handlers</li>
                   <li>all utensils and kitchenware must be cleaned and sanitized</li>
@@ -86,7 +85,7 @@
                   <li>privies, washing and sewage sources must not contaminate any bodies of water</li>
                   <li>privies must be adequately stocked, easy to clean, vented and private</li>
                   <li>refuse and waste must not accumulate in or near the camp and be stored in covered waste disposals</li>
-                  <li>Reduce bear problems. DO NOT throw food into surrounding areas of the camp.</li>
+                  <li>DO NOT throw food into surrounding areas of the camp.</li>
                 </ul>
               </details>
               <details>
@@ -98,8 +97,8 @@
                 <div class="alert alert-info" role="alert">
                   <p><strong>Physically demanding work requires a higher daily intake of calories and water.</strong></p>
                   <ul>
-                    <li>eat approximately 5000-7000 calories a day</li>
-                    <li>drink approximately 4-8 litres of water per day</li>
+                    <li>Eat approximately 5000-7000 calories a day</li>
+                    <li>Drink approximately 4-8 litres of water per day</li>
                     <li>Listen to your body. Pay attention to the demands of your job and the environment.</li>
                   </ul>
                 </div>
