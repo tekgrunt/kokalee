@@ -33,12 +33,13 @@ declare global {
   const app: AppComponent
 }
 
-(window as any).app =
+Vue.component('login', login);
+
+(window as Window & {app: AppComponent}).app =
 new Vue({
   el: '#app-main',
   router: createRouter(),
   components: {
-    login,
     'navbar': navbarComponent,
     'sidemenu': sidemenuComponent
   }
