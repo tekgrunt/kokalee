@@ -34,6 +34,7 @@ declare global {
 }
 
 Vue.component('login', login);
+Vue.component('sidemenu', sidemenuComponent);
 
 (window as Window & {app: AppComponent}).app =
 new Vue({
@@ -41,7 +42,7 @@ new Vue({
   router: createRouter(),
   components: {
     info,
-    'navbar': navbarComponent,
-    'sidemenu': sidemenuComponent
+    'navbar': navbarComponent
+    // 'sidemenu': sidemenuComponent
   }
 });

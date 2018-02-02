@@ -1,6 +1,12 @@
 <template lang="html">
-    <b-row style="margin-top: 100px;">
-      <b-col cols="12">
+  <b-container>
+    <b-row>
+      <b-col cols="3">
+        <div id="sidemenu">
+          <sidemenu></sidemenu>
+        </div>
+      </b-col>
+      <b-col cols="9" style="margin-top: 100px;">
         <div class="text-center">
           <h2>Forestry Guidelines</h2>
         </div>
@@ -158,6 +164,7 @@
         <p class="text-center" style="padding-top: 5px;">For more details, see the Ministry of Forests <a href="https://www.for.gov.bc.ca/hfp/silviculture/planting/minsafe/MINSAFEE/MSGHOME.HTM">manual.</a></p>
       </b-col>
     </b-row>
+  </b-container>
 </template>
 
 <script lang="ts">
@@ -165,7 +172,6 @@
 import Vue from 'vue'
 import {Component} from 'vue-property-decorator'
 import app from '../util/app'
-
 
 @Component({})
 
