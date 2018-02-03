@@ -54,7 +54,7 @@
           Camps
         </b-link>
         <p class="card-text">Standards for accommodations, food preparation and handling, water and sanitary facilities. </p>
-        <div id="collapseTwo" v-if="showTwo">
+        <div v-if="showTwo">
           <div class="card-body">
             <div class="alert alert-warning" role="alert">
               <p><strong>All camps must exceed minimum standards in the regulations:</strong></p>
@@ -121,7 +121,7 @@
       <b-card class="w-75">
         <b-link v-on:click="showThree = !showThree" class="resources-link">Accidents and Injuries</b-link>
         <p class="card-text">Guide for reporting accidents and injuries.</p>
-        <div id="collapseThree" v-if="showThree">
+        <div v-if="showThree">
           <div class="card-body">
             <div class="alert alert-danger" role="alert">
               <p><strong>24 hour WCB emergency phone number: 604-273-7711</strong></p>
