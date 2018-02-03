@@ -11,9 +11,18 @@
         <b-link v-on:click="showOne = !showOne" style="font-size: 20px;">
           Responsibilities
         </b-link>
-        <p class="card-text">Learn your rights and responsibilities when it comes to health and safety on the job.</p>
+        <p class="card-text">Learn about your rights and responsibilities when it comes to health and safety on the job.</p>
         <div v-if="showOne">
           <div class="card-body">
+            <div class="alert alert-info" role="alert">
+              <p><strong>Worker Rights:</strong></p>
+              <ul>
+                <li>the right to know about hazardous materials in the work environment</li>
+                <li>the right to participate in health and safety</li>
+                <li>the right to refuse dangerous work</li>
+              </ul>
+              <p>Contact your local <a href="https://www.worksafebc.com/en/contact-us">Work Safe BC</a> office if an issue cannot be resolved.</p>
+            </div>
             <details>
               <summary>Employer Responsibilities</summary>
               <ul>
