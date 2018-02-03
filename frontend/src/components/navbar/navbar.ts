@@ -15,7 +15,7 @@ import hoodie from '../../util/hoodie'
 })
 
 export class NavbarComponent extends Vue {
-  protected logger: Logger;
+  // protected logger: Logger;
 
   links: Link[] = [
     new Link('Home', '/'),
@@ -24,12 +24,12 @@ export class NavbarComponent extends Vue {
     new Link('Resources', '/info')
   ];
 
-  @Watch('$route.path')
-  pathChanged() {
-    this.logger.info(`Changed current path to: ${this.$route.path}`);
-  }
-
-  mounted() {
-    if (!this.logger) this.logger = new Logger();
-  }
+  // @Watch('$route.path')
+  // pathChanged() {
+  //   this.logger.info(`Changed current path to: ${this.$route.path}`);
+  // }
+  //
+  // mounted() {
+  //   if (!this.logger) this.logger = new Logger();
+  // }
 }

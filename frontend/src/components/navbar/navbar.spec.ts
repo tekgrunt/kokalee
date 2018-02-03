@@ -14,7 +14,7 @@ const loggerSpy = spy();
 class MockNavbarComponent extends NavbarComponent {
   constructor() {
     super();
-    this.logger = new MockLogger(loggerSpy);
+    // this.logger = new MockLogger(loggerSpy);
   }
 }
 
