@@ -1,16 +1,14 @@
 <template>
-  <b-container>
-    <b-row>
-      <b-col cols="3">
-        <sidemenu id="sidemenu"></sidemenu>
-      </b-col>
-      <b-col cols="9" style="margin-top: 100px;">
-        <h1>
-          <strong>This is the test page</strong>
-        </h1>
-      </b-col>
-    </b-row>
-  </b-container>
+  <b-row>
+    <b-col sm="2" style="padding-left: 0px;">
+      <sidemenu id="sidemenu"></sidemenu>
+    </b-col>
+    <b-col sm="10" style="margin-top: 100px;">
+      <h1>
+        <strong>This is the test page</strong>
+      </h1>
+    </b-col>
+  </b-row>
 </template>
 
 <script lang="ts">
