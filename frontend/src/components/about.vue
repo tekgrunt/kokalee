@@ -1,9 +1,9 @@
 <template>
   <b-row>
-    <b-col sm="2" style="padding-left: 0px;">
+    <b-col sm="2" class="pl-0">
       <sidemenu id="sidemenu"></sidemenu>
     </b-col>
-    <b-col sm="10" style="margin-top: 100px;">
+    <b-col sm="10" class="content">
       <h1>
         <strong>This is the test page</strong>
       </h1>
