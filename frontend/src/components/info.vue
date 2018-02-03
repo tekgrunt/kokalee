@@ -1,5 +1,5 @@
-<template id="info" lang="html">
-  <b-row>
+<template lang="html">
+  <b-row id="info">
     <b-col sm="2" class="pl-0">
       <sidemenu id="sidemenu"></sidemenu>
     </b-col>
