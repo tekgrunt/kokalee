@@ -1,14 +1,14 @@
-<template lang="html">
+<template id="info" lang="html">
   <b-row>
-    <b-col sm="2" style="padding-left: 0px;">
+    <b-col sm="2" class="pl-0">
       <sidemenu id="sidemenu"></sidemenu>
     </b-col>
-    <b-col sm="10" style="margin-top: 100px;">
+    <b-col sm="10" class="content">
       <div>
         <h2>Forestry Guidelines</h2>
       </div>
       <b-card class="w-75">
-        <b-link v-on:click="showOne = !showOne" style="font-size: 20px;">
+        <b-link v-on:click="showOne = !showOne" class="resources-link">
           Responsibilities
         </b-link>
         <p class="card-text">Learn about your rights and responsibilities when it comes to health and safety on the job.</p>
@@ -50,7 +50,7 @@
         </div>
       </b-card>
       <b-card class="w-75">
-        <b-link v-on:click="showTwo = !showTwo" style="font-size: 20px;">
+        <b-link v-on:click="showTwo = !showTwo" class="resources-link">
           Camps
         </b-link>
         <p class="card-text">Standards for accommodations, food preparation and handling, water and sanitary facilities. </p>
@@ -119,7 +119,7 @@
         </div>
       </b-card>
       <b-card class="w-75">
-        <b-link v-on:click="showThree = !showThree" style="font-size: 20px;">Accidents and Injuries</b-link>
+        <b-link v-on:click="showThree = !showThree" class="resources-link">Accidents and Injuries</b-link>
         <p class="card-text">Guide for reporting accidents and injuries.</p>
         <div id="collapseThree" v-if="showThree">
           <div class="card-body">
@@ -167,7 +167,8 @@
           </div>
         </div>
       </b-card>
-      <p style="padding-top: 5px;">For more details, see the Ministry of Forests <a href="https://www.for.gov.bc.ca/hfp/silviculture/planting/minsafe/MINSAFEE/MSGHOME.HTM">manual.</a></p>
+      <br>
+      <p>For more details, see the Ministry of Forests <a href="https://www.for.gov.bc.ca/hfp/silviculture/planting/minsafe/MINSAFEE/MSGHOME.HTM">manual.</a></p>
     </b-col>
   </b-row>
 </template>
@@ -188,15 +189,5 @@ export default class InfoComponent extends Vue {
 </script>
 
 <style lang="scss">
-  .btn-link {
-      font-size: 25px;
-  }
-  summary {
-    font-size: 18px;
-    padding: 5px;
-  }
-  li {
-    font-size: 16px;
-    padding: 2px;
-  }
+
 </style>

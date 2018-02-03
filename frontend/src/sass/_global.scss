@@ -6,12 +6,14 @@ html, body, #app-main {
 }
 
 .container {
-  padding-left: 0px;
   margin-left: 0px;
   margin-right: 0px;
 
-  &.content {
-    margin-top: $navbar-height + 20px
+  // &.content {
+  //   margin-top: $navbar-height + 20px;
+  // }
+}
 
-  }
+.content {
+  margin-top: $navbar-height + 20px;
 }
