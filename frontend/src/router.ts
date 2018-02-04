@@ -52,10 +52,6 @@ export const createRoutes: () => RouteConfig[] = () => [
     component: listComponent,
   },
   {
-    path: '/sidemenu',
-    component: sidemenuComponent,
-  },
-  {
     path: '/info',
     component: infoComponent
   }
