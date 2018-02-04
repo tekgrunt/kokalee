@@ -1,6 +1,6 @@
-# hoodie-plugin-hello-world
+# hoodie-plugin-rocket.chat
 
-> A sample Hoodie plugin
+> A hoodie plugin for iframe auth in Rocket.Chat
 
 This Hoodie plugin is a great starting point if you want to create an own Hoodie
 plugin. It extends the `hoodie` client API, it defines a server route and a UI
@@ -11,7 +11,7 @@ which can be accessed at `/hoodie/hello-world`.
 First, install the plugin as dependency of your Hoodie app
 
 ```js
-npm install --save @hoodie/plugin-hello-world
+npm install --save hoodie-plugin-rocket.chat
 ```
 
 Then add it the `hoodie.plugins` array in your app’s `package.json` file.
@@ -34,18 +34,18 @@ If you like, you can change the default greeting and name in
 }
 ```
 
+Set the api url in Rocket.Chat to `http://localhost:8080/hoodie/rocket.chat`
+
+Set the api url in Rocket.Chat to `http://localhost:8080/hoodie/rocket.chat/auth`
+
 You can now start your app with `npm start` and access the hello world form
-at [localhost:8080/hoodie/hello-world](http://localhost:8080/hoodie/hello-world).
+at [localhost:8080/hoodie/rocket.chat](http://localhost:8080/hoodie/rocket.chat).
 
 ## Local setup
 
 This plugin has `hoodie` as devDependency. The idea is that plugins can be
 started just like apps. Simply `git clone` this repository, run `npm install`
 and then `npm start`.
-
-This plugin has no tests yet, but it would be nice to add some soon, so that
-plugin authors get a good blueprint which includes tests for their own plugins.
-See [#11](https://github.com/hoodiehq/hoodie-plugin-hello-world/issues/11)
 
 ## License
 

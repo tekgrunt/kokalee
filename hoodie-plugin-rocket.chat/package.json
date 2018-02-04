@@ -4,7 +4,10 @@
   "description": "Hoodie plugin for Rocket.Chat IFrame auth",
   "main": "index.js",
   "scripts": {
-    "compile": "tsc",
+    "compile": "run-p compile:*",
+    "compile:ts": "tsc",
+    "compile:cpx": "cpx 'src/**/*.{html,css}' .",
+    "dev": "run-p -s 'compile:* -- --watch'",
     "start": "hoodie",
     "lint": "tslint",
     "test": "echo 'Write some tests!'",
@@ -30,13 +33,16 @@
   },
   "homepage": "https://github.com/tekgrunt/kokalee/tree/master/hoodie-plugin-rocket.chat",
   "devDependencies": {
+    "@types/hapi": "^16.1.12",
     "@types/node": "^9.4.0",
+    "cpx": "^1.5.0",
     "hoodie": "^28.0.0",
+    "npm-run-all": "^4.1.2",
     "tslint": "^5.9.1",
     "typescript": "^2.7.1"
   },
   "hoodie": {
     "name": "rocket.chat",
-    "public": "lib/hoodie/public"
+    "public": "hoodie/public"
   }
 }
