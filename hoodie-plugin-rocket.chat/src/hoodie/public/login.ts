@@ -110,3 +110,7 @@ $signOut.addEventListener('click', (event) => {
   })
   .catch(showError)
 })
+
+window.addEventListener('message', (event) => {
+  console.log(event);
+})
