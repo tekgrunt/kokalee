@@ -6,9 +6,8 @@ const homeComponent = () => import('./components/home').then(({HomeComponent}) =
 const aboutComponent = () => import('./components/about.vue').then(({default: AboutComponent}) => AboutComponent);
 const listComponent = () => import('./components/list').then(({ListComponent}) => ListComponent);
 const sidemenuComponent = () => import('./components/sidemenu').then(({SideMenuComponent}) => SideMenuComponent);
-// const homeComponent = () => import(/* webpackChunkName: 'home' */'./components/home').then(({HomeComponent}) => HomeComponent);
-// const aboutComponent = () => import(/* webpackChunkName: 'about' */'./components/about.vue').then(({AboutComponent}) => AboutComponent);
-// const listComponent = () => import(/* webpackChunkName: 'list' */'./components/list').then(({ListComponent}) => ListComponent);
+
+const chat = async () => (await import('./components/chat.vue')).default
 
 if (process.env.ENV === 'development' && module.hot) {
   const homeModuleId = './components/home';
@@ -29,6 +28,11 @@ if (process.env.ENV === 'development' && module.hot) {
 
   makeHot(sidemenuModuleId, sidemenuComponent,
     module.hot.accept('./components/sidemenu', () => reload(sidemenuModuleId, (<any>require('./components/sidemenu')).SideMenuComponent)));
+
+  const chatId = './components/chat.vue'
+  makeHot(chatId, chat,
+    module.hot.accept('./components/chat.vue', () =>
+      reload(chatId, (<any>require('./components/chat.vue')).default)))
 }
 
 Vue.use(VueRouter);
@@ -49,6 +53,10 @@ export const createRoutes: () => RouteConfig[] = () => [
   {
     path: '/sidemenu',
     component: sidemenuComponent,
+  },
+  {
+    path: '/chat',
+    component: chat,
   }
 ];
 
