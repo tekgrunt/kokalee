@@ -12,7 +12,7 @@ const loggerSpy = spy();
 class MockSideMenuComponent extends SideMenuComponent {
   constructor() {
     super();
-    this.logger = new MockLogger(loggerSpy);
+    // this.logger = new MockLogger(loggerSpy);
   }
 }
 

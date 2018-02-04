@@ -15,12 +15,13 @@ import hoodie from '../../util/hoodie'
 })
 
 export class NavbarComponent extends Vue {
-  protected logger: Logger;
+  protected logger!: Logger;
 
   links: Link[] = [
     new Link('Home', '/'),
     new Link('About', '/about'),
-    new Link('List', '/list')
+    new Link('List', '/list'),
+    new Link('Resources', '/info')
   ];
 
   @Watch('$route.path')

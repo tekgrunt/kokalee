@@ -1,16 +1,17 @@
-<div class="container content">
-  <div class="row">
+<b-row>
+  <b-col sm="2" class="pl-0">
+    <sidemenu id="sidemenu"></sidemenu>
+  </b-col>
+  <b-col sm="10" class="content">
     <button v-on:click="addItem()">add item to list</button>
-  </div>
-  <div class="row">
     <button v-on:click="loadItems()">get list</button>
-  </div>
-  <div class="row">
-    <div class="content col-md-4">
-      <h1>List</h1>
-      <ul>
-        <li v-for="item in items">{{item.name}}</li>
-      </ul>
+    <div class="row">
+      <div class="content col-md-4">
+        <h1>List</h1>
+        <ul>
+          <li v-for="item in items">{{item.name}}</li>
+        </ul>
+      </div>
     </div>
-  </div>
-</div>
+  </b-col>
+</b-row>

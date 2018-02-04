@@ -2,14 +2,18 @@
 
 html, body, #app-main {
   height: 100%;
+  width: 100%;
 }
 
 .container {
   margin-left: 0px;
   margin-right: 0px;
 
-  &.content {
-    margin-top: $navbar-height + 20px
+  // &.content {
+  //   margin-top: $navbar-height + 20px;
+  // }
+}
 
-  }
+.content {
+  margin-top: $navbar-height + 20px;
 }

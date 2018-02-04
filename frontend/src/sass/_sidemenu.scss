@@ -1,17 +1,16 @@
 #sidemenu {
   background: #eee;
   height: 100vh;
-
   padding-top: $navbar-height + 20px;
 
-
-  ul {
-    padding-left: 0px;
-    list-style: none;
-  }
-  li {
-    margin-top: 8px;
-  }
+  // ul {
+  //   padding-left: 0px;
+  //   list-style: none;
+  // }
+  // li {
+  //   padding-left: 8px;
+  //   margin-top: 8px;
+  // }
 }
 
 @media only screen and (max-width: 767px) {

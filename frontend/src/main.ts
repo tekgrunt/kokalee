@@ -14,8 +14,8 @@ const navbarComponent = () => import('./components/navbar')
 
 const sidemenuComponent = () => import('./components/sidemenu')
 .then(({SideMenuComponent}) => SideMenuComponent);
-const login = () => import('./components/login.vue')
-.then(({default: c}) => c);
+const login = async () => (await import('./components/login.vue')).default
+const info = async () => (await import('./components/info.vue')).default
 
 import './sass/main.scss';
 import {AppComponent} from './util/types';
@@ -34,13 +34,15 @@ declare global {
 }
 
 Vue.component('login', login);
+Vue.component('sidemenu', sidemenuComponent);
 
 (window as Window & {app: AppComponent}).app =
 new Vue({
   el: '#app-main',
   router: createRouter(),
   components: {
-    'navbar': navbarComponent,
-    'sidemenu': sidemenuComponent
+    info,
+    'navbar': navbarComponent
+    // 'sidemenu': sidemenuComponent
   }
 });
