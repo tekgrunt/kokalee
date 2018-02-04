@@ -21,6 +21,7 @@ export class NavbarComponent extends Vue {
     new Link('Home', '/'),
     new Link('About', '/about'),
     new Link('List', '/list'),
+    new Link('File Share', '/share'),
     new Link('Resources', '/info')
   ];
 
