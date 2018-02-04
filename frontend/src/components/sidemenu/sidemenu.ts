@@ -9,7 +9,7 @@ import {Link} from '../util/link';
 })
 export class SideMenuComponent extends Vue {
 
-  protected logger: Logger;
+  protected logger!: Logger;
 
   links: Link[] = [
     new Link('Home', '/'),

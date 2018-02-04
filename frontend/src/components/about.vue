@@ -19,7 +19,7 @@ import {Logger} from '../util/log';
 @Component({})
 export default class AboutComponent extends Vue {
 
-  protected logger: Logger;
+  protected logger!: Logger;
   repo = 'https://github.com/ducksoupdev/vue-webpack-typescript';
 
   mounted() {

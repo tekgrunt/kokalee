@@ -15,7 +15,7 @@ import hoodie from '../../util/hoodie'
 })
 
 export class NavbarComponent extends Vue {
-  protected logger: Logger;
+  protected logger!: Logger;
 
   links: Link[] = [
     new Link('Home', '/'),
