@@ -3,6 +3,7 @@
   {
     "path": "."
   },
-  {"path": ".."} 
+  {"path": "../hoodie-plugin-rocket.chat"},
+  {"path": ".."}
 ]
 }

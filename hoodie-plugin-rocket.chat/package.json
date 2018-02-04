@@ -1,34 +1,42 @@
 {
-  "name": "@hoodie/plugin-hello-world",
+  "name": "hoodie-plugin-rocket.chat",
   "version": "0.0.0-development",
-  "description": "A sample Hoodie plugin",
+  "description": "Hoodie plugin for Rocket.Chat IFrame auth",
   "main": "index.js",
   "scripts": {
+    "compile": "tsc",
     "start": "hoodie",
-    "test": "standard",
-    "semantic-release": "semantic-release"
+    "lint": "tslint",
+    "test": "echo 'Write some tests!'",
+    "posttest": "npm run lint",
+    "sort-package-json-and-add": "sort-package-json && git add package.json",
+    "sort-package-json-if-fully-staged": "unset GIT_DIR; git -c core.pager= ls-files -m package.json --error-unmatch || npm run sort-package-json-and-add"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hoodiehq/hoodie-plugin-hello-world.git"
+    "url": "https://github.com/tekgrunt/kokalee.git"
   },
-  "keywords": ["hoodie", "plugin"],
-  "author": "The Hoodie Community",
+  "keywords": [
+    "hoodie",
+    "plugin"
+  ],
+  "author": "Emily Marigold Klassen <forivall@gmail.com>",
   "license": "Apache-2.0",
   "publishConfig": {
     "access": "public"
   },
   "bugs": {
-    "url": "https://github.com/hoodiehq/hoodie-plugin-hello-world/issues"
+    "url": "https://github.com/tekgrunt/kokalee/issues?q=is%3Aopen+is%3Aissue+label%3Ahoodie-plugin-rocket.chat"
   },
-  "homepage": "https://github.com/hoodiehq/hoodie-plugin-hello-world#readme",
+  "homepage": "https://github.com/tekgrunt/kokalee/tree/master/hoodie-plugin-rocket.chat",
   "devDependencies": {
+    "@types/node": "^9.4.0",
     "hoodie": "^28.0.0",
-    "standard": "^10.0.2",
-    "semantic-release": "^12.2.2"
+    "tslint": "^5.9.1",
+    "typescript": "^2.7.1"
   },
   "hoodie": {
-    "name": "hello-world",
-    "public": "hoodie/public"
+    "name": "rocket.chat",
+    "public": "lib/hoodie/public"
   }
 }
