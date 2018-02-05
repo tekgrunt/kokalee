@@ -9,7 +9,7 @@ namespace plugin {
   export class RocketChat {
     constructor(private hoodie) {}
 
-    auth(sessionId?: string): Promise<any> {
+    auth(sessionId?: string): Promise<{token: string}> {
       return (sessionId ?
         Promise.resolve(sessionId) :
         this.hoodie.account.get().then((user) => {
@@ -26,6 +26,18 @@ namespace plugin {
           'Accept': 'application/json'
         }
       })).then((response) => {
+        return JSON.parse(response.body)
+      })
+    }
+
+    config(): Promise<{rootUrl: string}> {
+      return this.hoodie.request({
+        method: 'GET',
+        url: '/hoodie/rocket.chat/api/config',
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then((response) => {
         return JSON.parse(response.body)
       })
     }

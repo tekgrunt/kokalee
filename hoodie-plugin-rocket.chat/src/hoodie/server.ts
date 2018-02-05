@@ -8,9 +8,17 @@ import * as pkg from '../package.json'
 import {Timestamp} from 'bson';
 
 export interface HoodieOptions {
+  [plugin: string]: any
+  name: string
+  loglevel: string
+  plugins: string[]
   app: {
     rocketChat?: PluginOptions
   }
+  inMemory: boolean
+  client: Record<string, any>
+  PouchDB: PouchDB.Static
+  db: Record<string, any>
 }
 
 export interface PluginOptions {
@@ -83,6 +91,16 @@ export interface HoodieAccountsServerApi {
 export interface AccountApi {
   // TODO
 }
+export interface HoodieStorePlugin {
+  api: HoodieStoreApi
+}
+export interface HoodieStoreApi {
+  on(event: 'add', handler: (object, options) => any)
+  on(event: 'update', handler: (object, options) => any)
+  on(event: 'remove', handler: (object, options) => any)
+  on(event: 'change', handler: (eventName, object, options) => any)
+  on(event: 'clear', handler: () => any)
+}
 
 // from https://github.com/hoodiehq/hoodie-account-server/blob/3c84e1/routes/utils/request-to-session-id.js?ts=2
 function toSessionId(request: Request) {
@@ -99,7 +117,6 @@ export function register(server: Server, options: HoodieOptions, next: (err?: Er
 
   const accounts = (server.plugins.account as HoodieAccountsPlugin).api
 
-
   const web = opts.rootUrl || 'http://localhost:3000';
   // if you didn't set up mongodb automatically, this can be found at
   // .meteor/local/db/METEOR-PORT in whatever folder mongodb is run from
@@ -109,6 +126,16 @@ export function register(server: Server, options: HoodieOptions, next: (err?: Er
 
   let client: MongoClient | null = null;
   let coll: Collection;
+
+  function getClient(): Promise<MongoClient> {
+    if (client != null) return Promise.resolve(client)
+    return MongoClient.connect(mongodb, {
+      autoReconnect: true
+    }).then((client) => {
+      coll = client.db('meteor').collection('users')
+      return client
+    })
+  }
 
   server.route({
     method: 'GET',
@@ -121,12 +148,7 @@ export function register(server: Server, options: HoodieOptions, next: (err?: Er
       }
 
       // Set up mongo client
-      if (client === null) {
-        client = await MongoClient.connect(mongodb, {
-          autoReconnect: true
-        });
-        coll = client.db('meteor').collection('users')
-      }
+      if (client === null) client = await getClient()
 
       // Get session from hoodie
       let session: SessionProperties
@@ -166,10 +188,21 @@ export function register(server: Server, options: HoodieOptions, next: (err?: Er
           upsert: true
         }
       )
+      console.log('added rocket chat user')
 
       reply(null, {
         token: sessionId
       }).code(201)
+    }
+  })
+
+  server.route({
+    method: 'GET',
+    path: '/api/config',
+    handler(request, reply) {
+      reply(null, {
+        rootUrl: web
+      })
     }
   })
 

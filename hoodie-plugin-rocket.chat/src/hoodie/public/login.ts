@@ -1,6 +1,20 @@
 
-declare const hoodie: any;
+declare class RocketChat {
+  constructor(hoodie: any)
+  auth(sessionId?: string): Promise<{
+    token: string;
+  }>;
+  config(): Promise<{
+    rootUrl: string
+  }>;
+}
 
+declare const hoodie: {
+  rocketchat: RocketChat
+  account: any
+};
+
+const $main = document.querySelector<HTMLDivElement>('#main')!
 const $form = document.querySelector('form')!
 const $error = document.querySelector<HTMLParagraphElement>('#error')!
 const $signUp = document.querySelector<HTMLButtonElement>('#signup-button')!
@@ -25,24 +39,29 @@ function zalgoPromiseReject(err) {
   }
 }
 
-interface AuthResponse {token: string}
-
 // TODO: make rocketchat origin configurable
-const ROCKET_CHAT = 'http://localhost:3000'
+const config = hoodie.rocketchat.config()
 
-let $iframe: HTMLIFrameElement | null = null;
+let $iframe: HTMLIFrameElement | null = null
 if (window.top === window) {
-  $iframe = document.querySelector('iframe')!
-  // $iframe.setAttribute('src', ROCKET_CHAT);
-  const $chatContainer = document.querySelector<HTMLDivElement>('.chat-container')!
-  $chatContainer.style.display = ''
+  $main.style.display = ''
+  // $iframe = document.querySelector('iframe')!
+  // config.then(({rootUrl}) => {
+  //   $iframe!.setAttribute('src', rootUrl)
+  // })
+  // const $chatContainer = document.querySelector<HTMLDivElement>('.chat-container')!
+  // $chatContainer.style.display = ''
 }
 
-loggedIn(true)
+loggedIn(true).then((loggedIn) => {
+  if (!loggedIn) {
+    $main.style.display = ''
+  }
+})
 function loggedIn(fetchToken: boolean) {
   console.log('[rocket.chat] checking login')
-  ;(fetchToken ? (hoodie.rocketchat.auth() as Promise<AuthResponse>) : zalgoPromiseReject(new Error('Not fetching')))
-  .then((resp) => {
+  return (fetchToken ? (hoodie.rocketchat.auth()) : zalgoPromiseReject(new Error('Not fetching')))
+  .then((resp: {token: string}) => {
     $signOut.removeAttribute('disabled')
     formInputs.forEach(el => el.setAttribute('disabled', 'disabled'))
 
@@ -51,15 +70,19 @@ function loggedIn(fetchToken: boolean) {
       token: resp.token
       // event: 'try-iframe-login'
     }
-    console.log('[rocket.chat] posting message to ' + ROCKET_CHAT, message)
-    if ($iframe) {
-      $iframe.contentWindow.postMessage(message, ROCKET_CHAT)
-    } else {
-      window.parent.postMessage(message, ROCKET_CHAT);
-    }
+    return config.then(({rootUrl}) => {
+      console.log('[rocket.chat] posting message to ' + rootUrl, message)
+      if ($iframe) {
+        $iframe.contentWindow.postMessage(message, rootUrl)
+      } else {
+        window.parent.postMessage(message, rootUrl)
+      }
+      return true
+    })
   }, (err) => {
     $signOut.setAttribute('disabled', 'disabled')
     formInputs.forEach(el => el.removeAttribute('disabled'))
+    return false
   })
 }
 
