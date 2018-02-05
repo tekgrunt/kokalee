@@ -2,6 +2,8 @@
 import * as pkg from '../package.json'
 import {Server, PluginAttributes, Request} from 'hapi';
 
+import {MongoClient} from 'mongodb'
+
 export interface HoodieOptions {
   app: {
     rocketChat?: PluginOptions
@@ -101,13 +103,18 @@ export function register(server: Server, options: HoodieOptions, next: (err?: Er
   // database: meteor
   // db.getCollection('users').find({})
 
+  let client: MongoClient | null = null;
+
   server.route({
-    method: 'POST',
+    method: 'GET',
     path: '/api/auth',
     async handler(request, reply) {
-      const options = request.payload
       // Hoodie auth headers start with "Session " = 8 characters
       const sessionId = toSessionId(request)
+
+      if (client == null) client = await MongoClient.connect(mongodb, {
+        autoReconnect: true
+      });
 
       let session: SessionProperties
       try {

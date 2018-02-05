@@ -17,8 +17,15 @@ function zalgoPromiseResolve<T>(val: T) {
     }
   }
 }
+function zalgoPromiseReject(err) {
+  return {
+    then(resolve: (val) => void, reject: (err) => any) {
+      return zalgoPromiseResolve(reject(err))
+    }
+  }
+}
 
-interface User {session?: {id: string}}
+interface AuthResponse {token: string}
 
 // TODO: make rocketchat origin configurable
 const ROCKET_CHAT = 'http://localhost:3000'
@@ -26,34 +33,33 @@ const ROCKET_CHAT = 'http://localhost:3000'
 let $iframe: HTMLIFrameElement | null = null;
 if (window.top === window) {
   $iframe = document.querySelector('iframe')!
-  $iframe.setAttribute('src', ROCKET_CHAT);
+  // $iframe.setAttribute('src', ROCKET_CHAT);
   const $chatContainer = document.querySelector<HTMLDivElement>('.chat-container')!
   $chatContainer.style.display = ''
 }
 
 loggedIn(true)
-function loggedIn(getUser: boolean) {
+function loggedIn(fetchToken: boolean) {
   console.log('[rocket.chat] checking login')
-  ;(getUser ? (hoodie.account.get() as Promise<User>) : zalgoPromiseResolve({} as User)).then((user) => {
-    if (user.session) {
-      $signOut.removeAttribute('disabled')
-      formInputs.forEach(el => el.setAttribute('disabled', 'disabled'))
+  ;(fetchToken ? (hoodie.rocketchat.auth() as Promise<AuthResponse>) : zalgoPromiseReject(new Error('Not fetching')))
+  .then((resp) => {
+    $signOut.removeAttribute('disabled')
+    formInputs.forEach(el => el.setAttribute('disabled', 'disabled'))
 
-      const message = {
-        // event: 'login-with-token',
-        // token: user.session.id
-        event: 'try-iframe-login'
-      }
-      console.log('[rocket.chat] posting message to ' + ROCKET_CHAT, message)
-      if ($iframe) {
-        $iframe.contentWindow.postMessage(message, ROCKET_CHAT)
-      } else {
-        window.parent.postMessage(message, ROCKET_CHAT);
-      }
-    } else {
-      $signOut.setAttribute('disabled', 'disabled')
-      formInputs.forEach(el => el.removeAttribute('disabled'))
+    const message = {
+      event: 'login-with-token',
+      token: resp.token
+      // event: 'try-iframe-login'
     }
+    console.log('[rocket.chat] posting message to ' + ROCKET_CHAT, message)
+    if ($iframe) {
+      $iframe.contentWindow.postMessage(message, ROCKET_CHAT)
+    } else {
+      window.parent.postMessage(message, ROCKET_CHAT);
+    }
+  }, (err) => {
+    $signOut.setAttribute('disabled', 'disabled')
+    formInputs.forEach(el => el.removeAttribute('disabled'))
   })
 }
 

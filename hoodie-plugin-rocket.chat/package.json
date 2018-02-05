@@ -44,5 +44,9 @@
   "hoodie": {
     "name": "rocket.chat",
     "public": "hoodie/public"
+  },
+  "dependencies": {
+    "@types/mongodb": "^3.0.5",
+    "mongodb": "^3.0.2"
   }
 }
