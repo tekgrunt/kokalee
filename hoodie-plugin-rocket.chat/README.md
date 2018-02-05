@@ -15,19 +15,19 @@ npm install --save hoodie-plugin-rocket.chat
 ```
 
 Then add it the `hoodie.plugins` array in your app’s `package.json` file.
-If you like, you can change the default greeting and name in
-`hoodie.app.helloWorld.greeting` and `hoodie.app.helloWorld.name`.
+Here, you can specify the location of the rocket.chat server
+`hoodie.app.rocketChat.rootUrl`, and the connection string for its mongodb.
 
 ```json
 {
   "name": "your-hoodie-app",
   ...
   "hoodie": {
-    "plugins": ["@hoodie/plugin-hello-world"],
+    "plugins": ["hoodie-plugin-rocket.chat"],
     "app": {
-      "helloWorld": {
-        "greeting": "Bonjour",
-        "name": "le monde"
+      "rocketChat": {
+        "rootUrl": "http://localhost:3000",
+        "mongoUrl": "mongodb://localhost:3001"
       }
     }
   }
