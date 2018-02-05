@@ -34,9 +34,13 @@ If you like, you can change the default greeting and name in
 }
 ```
 
-Set the iframe url in Rocket.Chat to `http://localhost:8080/hoodie/rocket.chat`
+Next, in Rocket.Chat, as an admin, go to ... -> Administration -> Settings -> Accounts -> Iframe
+**NOTE:** change `localhost:8080` as appropriate for your deployment.
 
-Set the api url in Rocket.Chat to `http://localhost:8080/hoodie/rocket.chat/api/auth`
+* "Enabled" - select `True`
+* "Iframe URL" - `http://localhost:8080/hoodie/rocket.chat`
+* "API URL" - `http://localhost:8080/hoodie/rocket.chat/api/auth`
+* "Api Method" - `GET`
 
 You can now start your app with `npm start` and access the hello world form
 at [localhost:8080/hoodie/rocket.chat](http://localhost:8080/hoodie/rocket.chat).
