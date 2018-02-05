@@ -137,6 +137,32 @@ export function register(server: Server, options: HoodieOptions, next: (err?: Er
     })
   }
 
+  // monkey patch sessions, since it seems like it doesn't actually remove the session from the db???
+  const origSessionsRemove = server.plugins.account.api.sessions.remove
+
+  server.plugins.account.api.sessions.remove = function (sessionId, options) {
+    getClient().then(async (client) => {
+      console.log('removing session', sessionId);
+
+      const session = await accounts.sessions.find(sessionId)
+      const username = session.account.username
+      const user = await coll.findOne(
+        {username}, {
+          projection: {
+            'services.iframe.token': 1
+          }
+        }
+      )
+      if (user.services && user.services.iframe && user.services.iframe.token) {
+        const result = await coll.findOneAndUpdate({_id: user._id}, {
+          $set: {'services.iframe.token': ''}
+        })
+        console.log('removed rocket chat token', sessionId, result);
+      }
+    })
+    return origSessionsRemove(sessionId, options);
+  }
+
   server.route({
     method: 'GET',
     path: '/api/auth',
