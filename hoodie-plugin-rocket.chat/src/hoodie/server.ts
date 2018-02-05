@@ -4,6 +4,8 @@ import crypto = require('crypto');
 import {Server, PluginAttributes, Request} from 'hapi';
 import {MongoClient, Db, Collection} from 'mongodb'
 
+import * as PouchDB from 'pouchdb'
+
 import * as pkg from '../package.json'
 import {Timestamp} from 'bson';
 
@@ -112,10 +114,21 @@ function toSessionId(request: Request) {
   return request.headers.authorization.substr(8)
 }
 
+interface Content {
+  name?: string
+  roles?: string[]
+  renamed?: {
+    _id: string
+    _rev: number
+  }
+}
+
 export function register(server: Server, options: HoodieOptions, next: (err?: Error) => void): void {
   const opts = options.app.rocketChat || {}
 
   const accounts = (server.plugins.account as HoodieAccountsPlugin).api
+
+  const store = (server.plugins.store as HoodieStorePlugin).api
 
   const web = opts.rootUrl || 'http://localhost:3000';
   // if you didn't set up mongodb automatically, this can be found at
