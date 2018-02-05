@@ -17,7 +17,7 @@ export interface HoodieOptions {
   }
   inMemory: boolean
   client: Record<string, any>
-  PouchDB: PouchDB.Static
+  // PouchDB: PouchDB.Static
   db: Record<string, any>
 }
 
