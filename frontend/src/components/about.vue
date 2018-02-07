@@ -1,9 +1,14 @@
 <template>
-  <div class="container content">
-    <h1>
-      <strong>This is the test page</strong>
-    </h1>
-  </div>
+  <b-row>
+    <b-col sm="2" class="pl-0">
+      <sidemenu id="sidemenu"></sidemenu>
+    </b-col>
+    <b-col sm="10" class="content">
+      <h1>
+        <strong>This is the test page</strong>
+      </h1>
+    </b-col>
+  </b-row>
 </template>
 
 <script lang="ts">
@@ -14,7 +19,7 @@ import {Logger} from '../util/log';
 @Component({})
 export default class AboutComponent extends Vue {
 
-  protected logger: Logger;
+  protected logger!: Logger;
   repo = 'https://github.com/ducksoupdev/vue-webpack-typescript';
 
   mounted() {

@@ -9,18 +9,16 @@ import {Link} from '../util/link';
 })
 export class SideMenuComponent extends Vue {
 
-  protected logger: Logger;
-
-  object: { default: string } = {default: 'Default object property!'}; // objects as default values don't need to be wrapped into functions
+  protected logger!: Logger;
 
   links: Link[] = [
     new Link('Home', '/'),
     new Link('About', '/about'),
-    new Link('List', '/list')
+    new Link('List', '/list'),
+    new Link('Resources', '/info')
   ];
 
   mounted() {
     if (!this.logger) this.logger = new Logger();
-    this.$nextTick(() => this.logger.info('about is ready!'));
   }
 }

@@ -1,0 +1,27 @@
+
+.navbar-toggler {
+  margin-right: 10px;
+}
+
+.navbar-nav{
+  display: none;
+}
+
+.header{
+  width: 100%;
+
+  #navToggle{
+    float: right;
+    margin-top: 5px;
+  }
+
+  #headerLogo{
+    width: 200px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar-nav{
+    display: block;
+  }
+}
