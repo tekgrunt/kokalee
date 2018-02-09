@@ -9,6 +9,7 @@
     "ci:jenkins": "karma --env=jk start karma.coverage.js && npm run coverage:remap",
     "ci:teamcity": "karma --env=tc start karma.coverage.js && npm run coverage:remap",
     "clean": "rimraf dist && rimraf coverage",
+    "precompile": "npm run vuetype",
     "compile": "webpack --config config/webpack.config.prod.js",
     "coverage": "npm run coverage:run && npm run coverage:remap && npm run coverage:open",
     "coverage:open": "opn coverage/html-ts/index.html",
@@ -17,7 +18,7 @@
     "dev": "run-p dev:*",
     "dev:hoodie": "hoodie --port 8084 --public dist",
     "dev:vue": "webpack-dev-server --hot --inline",
-    "dev:vuetype": "vuetype --watch src/components",
+    "dev:vuetype": "npm run vuetype -- --watch ",
     "git-pre-commit": "lint-staged",
     "postinstall": "cd ..; npm install",
     "lint": "tslint --project tsconfig.json --format stylish 'src/**/*.ts'",
@@ -27,7 +28,8 @@
     "start": "hoodie --public dist",
     "test": "cross-env NODE_ENV=development karma start karma.unit.js",
     "test:debug": "cross-env NODE_ENV=development karma start karma.debug.js",
-    "test:watch": "cross-env NODE_ENV=development karma start karma.unit.js --singleRun=false --auto-watch"
+    "test:watch": "cross-env NODE_ENV=development karma start karma.unit.js --singleRun=false --auto-watch",
+    "vuetype": "vuetype src/components"
   },
   "dependencies": {
     "@hoodie/client": "^10.1.1",
@@ -106,7 +108,7 @@
     "vue-loader": "^13.7.1",
     "vue-property-decorator": "^6.0.0",
     "vue-ts-loader": "0.0.3",
-    "vuetype": "github:forivall/vuetype#vue-cc-6",
+    "vuetype": "github:forivall/vuetype#fork-dist",
     "webpack": "~3.8.1",
     "webpack-dev-server": "^2.11.1"
   },
