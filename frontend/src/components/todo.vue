@@ -13,11 +13,17 @@
         <b-button type="submit" variant="primary">Add Item</b-button>
       </b-form>
       <br>
-      <div>
-        <b-form-checkbox v-for="item in todos" :key="item.title">
+      <b-list-group>
+        <b-list-group-item v-for="item in todos" :key="item.id">
+          <b-form-checkbox class="checkbox-center"></b-form-checkbox>
           {{ item.title }}
-        </b-form-checkbox>
-      </div>
+        </b-list-group-item>
+      </b-list-group>
+      <!-- <b-form-group>
+        <b-form-checkbox-group v-for="item in todos" :key="item.title">
+          {{ item.title }}
+        </b-form-checkbox-group>
+      </b-form-group> -->
     </b-col>
   </b-row>
 </template>
@@ -36,24 +42,42 @@ export interface Todo {
 @Component({})
 
 export default class TodoComponent extends Vue {
-  todo: Todo = {title: '', completed: false}
-  todos: Todo[] = this.fetchTodos()
+  protected hoodie = hoodie;
+  protected store = hoodie.store.withIdPrefix('todo');
+  todo: Todo = {title: '', completed: false};
+  todos: Todo[] = [];
   
   createTodo() {
     const title = this.todo.title.trim();
-    hoodie.store.add({
+    this.store.add({
       title,
       completed: false,
-    }).then(todo => console.log(todo))
-    .catch(err => console.error(err))
+    }).then((response) => {
+      console.log('todo:', response)
+      this.fetchTodos();
+    })
     this.todo.title = ''
   }
 
   fetchTodos() {
-    return hoodie.store.findAll().then(todos => console.log(todos))
+    console.log('loading items')
+    this.store.findAll().then((todos) => {
+      console.log(todos)
+      this.todos = todos
+    })
+    // }).catch(err) => {
+    //   this.hoodie.log(err)
+    // }
+  }
+  
+  created() {
+    this.fetchTodos();
   }
 }
 </script>
 
 <style lang="scss">
+  .checkbox-center {
+    min-height: 1.1rem;
+  }
 </style>
