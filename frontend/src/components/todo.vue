@@ -5,19 +5,19 @@
     </b-col>
     <b-col sm="10" class="content">
       <h1>To Do List</h1>
-      <b-form>
+      <b-form  @submit.prevent="createTodo()" >
         <b-form-group label="To Do:" label-for="input1" description="Add a todo to your list.">
           <b-form-input id="input1" type="text" v-model="todo.title" placeholder="todo">
           </b-form-input>
         </b-form-group>
-        <b-button type="submit" variant="primary">Submit</b-button>
+        <b-button type="submit" variant="primary">Add Item</b-button>
       </b-form>
       <br>
-      <b-list-group>
-        <b-list-group-item v-for="item in todos" :key="item">
-          {{ item }}
-        </b-list-group-item>
-      </b-list-group>
+      <div>
+        <b-form-checkbox v-for="item in todos" :key="item.title">
+          {{ item.title }}
+        </b-form-checkbox>
+      </div>
     </b-col>
   </b-row>
 </template>
@@ -37,15 +37,20 @@ export interface Todo {
 
 export default class TodoComponent extends Vue {
   todo: Todo = {title: '', completed: false}
-  todos: string[] = this.fetchTodos()
+  todos: Todo[] = this.fetchTodos()
   
   createTodo() {
-    
+    const title = this.todo.title.trim();
+    hoodie.store.add({
+      title,
+      completed: false,
+    }).then(todo => console.log(todo))
+    .catch(err => console.error(err))
+    this.todo.title = ''
   }
-  
+
   fetchTodos() {
-    return ['Todo!']
-    // hoodie.store.findAll()
+    return hoodie.store.findAll().then(todos => console.log(todos))
   }
 }
 </script>
