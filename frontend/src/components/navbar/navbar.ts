@@ -7,6 +7,7 @@ import {Link} from '../util/link';
 import {Logger} from '../../util/log';
 import hoodie from '../../util/hoodie'
 
+
 @Component({
   template: require('./navbar.html'),
   components: {
@@ -16,6 +17,7 @@ import hoodie from '../../util/hoodie'
 
 export class NavbarComponent extends Vue {
   protected logger!: Logger;
+  showNav: boolean = false;
 
   links: Link[] = [
     new Link('Home', '/'),
@@ -27,6 +29,17 @@ export class NavbarComponent extends Vue {
   @Watch('$route.path')
   pathChanged() {
     this.logger.info(`Changed current path to: ${this.$route.path}`);
+  }
+
+  created() {
+    hoodie.account.get().then((user) => {
+      if (user.session) {
+        // user is signed in, show navbar
+        this.showNav = true;
+      }
+    }).catch((err) => {
+      console.log(err)
+    })
   }
 
   mounted() {
