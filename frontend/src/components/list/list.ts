@@ -16,14 +16,9 @@ export class ListComponent extends Vue {
 
   items: UserResponse[] = [];
   private url = 'https://jsonplaceholder.typicode.com/users';
-  protected axios: AxiosStatic;
-  protected hoodie;
-
-  constructor() {
-    super();
-    this.axios = axios;
-    this.hoodie = hoodie;
-  }
+  protected axios: AxiosStatic = axios;
+  protected hoodie = hoodie
+  protected store = hoodie.store.withIdPrefix('list')
 
   mounted() {
     this.$nextTick(() => {
@@ -32,7 +27,7 @@ export class ListComponent extends Vue {
   }
 
   addItem() {
-    this.hoodie.store.add({
+    this.store.add({
       name: 'another item'
     }).then((response) => {
       console.log('added item:', response)
@@ -41,7 +36,8 @@ export class ListComponent extends Vue {
     })
   }
   loadItems() {
-    this.hoodie.store.findAll().then((items) => {
+    console.log('loading items')
+    this.store.findAll().then((items) => {
       this.items = items
     }).catch((err) => {
       this.hoodie.log(err);
