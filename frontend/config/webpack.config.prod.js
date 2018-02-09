@@ -58,6 +58,14 @@ webpackConfig.module.rules = [...webpackConfig.module.rules,
     })
   },
   {
+    test: /\.css$/,
+    loader: 'css-loader',
+    options: {
+      minimize: true,
+      sourceMap: true
+    }
+  },
+  {
     test: /\.(jpg|png|gif)$/,
     loader: 'file-loader?name=assets/img/[name].[ext]'
   },
