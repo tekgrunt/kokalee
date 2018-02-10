@@ -47,7 +47,7 @@ webpackConfig.plugins = [...webpackConfig.plugins,
 
 webpackConfig.devServer = {
   port: 8080,
-  host: 'localhost',
+  host: '0.0.0.0',
   historyApiFallback: true,
   watchOptions: {
     aggregateTimeout: 300,
