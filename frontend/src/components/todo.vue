@@ -16,7 +16,8 @@
       <br>
       <b-list-group class="w-75">
         <b-list-group-item v-for="todo in todos" :key="todo.id">
-          <b-form-checkbox @click="checkboxToggle(todo)" class="checkbox-center"></b-form-checkbox>
+          <b-form-checkbox v-model="todo.completed" @change="checkboxToggle(todo)" class="checkbox-center"></b-form-checkbox>
+          <!-- <b-form-checkbox @click="checkboxToggle(todo)" class="checkbox-center"></b-form-checkbox> -->
           {{ todo.title }}
           <b-btn @click="deleteTodo(todo)" class="float-right" size="sm" variant="outline-danger">Delete</b-btn>
         </b-list-group-item>
@@ -75,10 +76,12 @@ export default class TodoComponent extends Vue {
     })
   }
   
-  // clicking the checkbox does not trigger this function
-  // goal was to switch completed boolean to true and ideally cross out todo text
   checkboxToggle(todo) {
-    this.todo.completed = true
+    const id = todo._id
+    const completed = !this.todo.completed
+    this.store.update(id, {
+      completed: completed
+    })
     console.log(todo)
   }
   
