@@ -1,13 +1,13 @@
 <template lang="html">
   <b-row id="info">
-    <b-col sm="2" class="pl-0">
+    <b-col md="2" class="pl-0">
       <sidemenu id="sidemenu"></sidemenu>
     </b-col>
-    <b-col sm="10" class="content">
+    <b-col md="10" class="content">
       <div>
         <h2>Forestry Guidelines</h2>
       </div>
-      <b-card class="w-75">
+      <b-card>
         <b-link v-on:click="showOne = !showOne" class="resources-link">
           Responsibilities
         </b-link>
@@ -49,7 +49,7 @@
           </div>
         </div>
       </b-card>
-      <b-card class="w-75">
+      <b-card>
         <b-link v-on:click="showTwo = !showTwo" class="resources-link">
           Camps
         </b-link>
@@ -118,7 +118,7 @@
           </div>
         </div>
       </b-card>
-      <b-card class="w-75">
+      <b-card>
         <b-link v-on:click="showThree = !showThree" class="resources-link">Accidents and Injuries</b-link>
         <p class="card-text">Guide for reporting accidents and injuries.</p>
         <div v-if="showThree">

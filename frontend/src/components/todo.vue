@@ -70,11 +70,11 @@ export default class TodoComponent extends Vue {
   deleteTodo(todo) {
     this.store.remove(todo).then((response) => {
       console.log(response);
-      // how can I refresh the todos array without making another request?
       this.fetchTodos();
     })
   }
   
+  // would be nice to add a strikethrough for the todo.title if todo is completed
   checkboxToggle(todo) {
     const id = todo._id
     const completed = !this.todo.completed
