@@ -7,7 +7,6 @@
       <h2>To Do List</h2>
       <div>
         <b-input-group class="w-75">
-        <!-- <b-input-group @submit.prevent="createTodo()" class="w-75"> -->
           <b-form-input v-model="todo.title" placeholder="What's on your list to do?"></b-form-input>
           <b-input-group-append>
             <b-btn @click.prevent="createTodo()" variant="primary" type="submit">Add Todo</b-btn>
@@ -69,7 +68,6 @@ export default class TodoComponent extends Vue {
   }
   
   deleteTodo(todo) {
-    console.log(todo)
     this.store.remove(todo).then((response) => {
       console.log(response);
       // how can I refresh the todos array without making another request?
@@ -77,6 +75,8 @@ export default class TodoComponent extends Vue {
     })
   }
   
+  // clicking the checkbox does not trigger this function
+  // goal was to switch completed boolean to true and ideally cross out todo text
   checkboxToggle(todo) {
     this.todo.completed = true
     console.log(todo)
