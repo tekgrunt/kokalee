@@ -4,26 +4,24 @@
       <sidemenu id="sidemenu"></sidemenu>
     </b-col>
     <b-col sm="10" class="content">
-      <h1>To Do List</h1>
-      <b-form  @submit.prevent="createTodo()" >
-        <b-form-group label="To Do:" label-for="input1" description="Add a todo to your list.">
-          <b-form-input id="input1" type="text" v-model="todo.title" placeholder="todo">
-          </b-form-input>
-        </b-form-group>
-        <b-button type="submit" variant="primary">Add Item</b-button>
-      </b-form>
+      <h2>To Do List</h2>
+      <div>
+        <b-input-group class="w-75">
+        <!-- <b-input-group @submit.prevent="createTodo()" class="w-75"> -->
+          <b-form-input v-model="todo.title" placeholder="What's on your list to do?"></b-form-input>
+          <b-input-group-append>
+            <b-btn @click.prevent="createTodo()" variant="primary" type="submit">Add Todo</b-btn>
+          </b-input-group-append>
+        </b-input-group>
+      </div>
       <br>
-      <b-list-group>
-        <b-list-group-item v-for="item in todos" :key="item.id">
-          <b-form-checkbox class="checkbox-center"></b-form-checkbox>
-          {{ item.title }}
+      <b-list-group class="w-75">
+        <b-list-group-item v-for="todo in todos" :key="todo.id">
+          <b-form-checkbox @click="checkboxToggle(todo)" class="checkbox-center"></b-form-checkbox>
+          {{ todo.title }}
+          <b-btn @click="deleteTodo(todo)" class="float-right" size="sm" variant="outline-danger">Delete</b-btn>
         </b-list-group-item>
       </b-list-group>
-      <!-- <b-form-group>
-        <b-form-checkbox-group v-for="item in todos" :key="item.title">
-          {{ item.title }}
-        </b-form-checkbox-group>
-      </b-form-group> -->
     </b-col>
   </b-row>
 </template>
@@ -59,15 +57,29 @@ export default class TodoComponent extends Vue {
     this.todo.title = ''
   }
 
+  // once ~5 todos are added, they don't get added in sequence. 
   fetchTodos() {
     console.log('loading items')
     this.store.findAll().then((todos) => {
       console.log(todos)
       this.todos = todos
+    }).catch((err) => {
+      this.hoodie.log(err)
     })
-    // }).catch(err) => {
-    //   this.hoodie.log(err)
-    // }
+  }
+  
+  deleteTodo(todo) {
+    console.log(todo)
+    this.store.remove(todo).then((response) => {
+      console.log(response);
+      // how can I refresh the todos array without making another request?
+      this.fetchTodos();
+    })
+  }
+  
+  checkboxToggle(todo) {
+    this.todo.completed = true
+    console.log(todo)
   }
   
   created() {
