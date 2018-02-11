@@ -23,7 +23,8 @@ export class NavbarComponent extends Vue {
     new Link('Home', '/'),
     new Link('About', '/about'),
     new Link('List', '/list'),
-    new Link('Resources', '/info')
+    new Link('Resources', '/info'),
+    new Link('Chat', '/chat')
   ];
 
   @Watch('$route.path')

@@ -11,9 +11,17 @@
 <body>
   <div id="app-main">
     <navbar></navbar>
-    <b-container fluid>
-      <router-view>loading...</router-view>
-    </b-container>
+    <div class="container">
+
+      <div class="row">
+        <div id="sidemenu" class="col-sm-3">
+          <sidemenu></sidemenu>
+        </div>
+        <div class="col-sm-9 main-content">
+          <router-view>loading...</router-view>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 
