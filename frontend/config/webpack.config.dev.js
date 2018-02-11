@@ -49,7 +49,7 @@ webpackConfig.devServer = {
   port: 80,
   host: '192.168.2.74',
   historyApiFallback: true,
-  disableHostCheck: true,,
+  disableHostCheck: true,
   watchOptions: {
     aggregateTimeout: 300,
     poll: 1000
