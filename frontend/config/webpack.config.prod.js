@@ -18,8 +18,11 @@ const extractSass = new ExtractTextPlugin({
   disable: process.env.NODE_ENV === 'development'
 });
 
+// TODO: make this work with bootstrap vue components
 const purifyCss = new PurifyCSSPlugin({
-  paths: glob.sync(path.join(__dirname, '../src/**/*.html')),
+  paths: glob.sync(
+    path.join(__dirname, '../src/**/*.{html,vue}')
+  ),
   purifyOptions: {
     info: true,
     whitelist: []
@@ -92,7 +95,7 @@ webpackConfig.plugins = [...webpackConfig.plugins,
     minChunks: Infinity
   }),
   extractSass,
-  purifyCss,
+  // purifyCss,
   new HtmlWebpackPlugin({
     inject: true,
     template: helpers.root('/src/index.html'),
