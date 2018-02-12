@@ -19,7 +19,9 @@ export default class ChatComponent extends Vue {
 
   mounted() {
     if (!this.logger) this.logger = new Logger();
-    this.$nextTick(() => this.logger.info('chat is ready!'));
+    this.$nextTick(() => {
+      this.logger.info('chat is ready!' + this.chatServer)
+    });
   }
 }
 
@@ -39,5 +41,6 @@ export default class ChatComponent extends Vue {
 iframe {
   width: 100%;
   border: 0;
+  min-height: 500px;
 }
 </style>

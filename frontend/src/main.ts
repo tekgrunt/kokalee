@@ -3,6 +3,7 @@ import BootstrapVue from 'bootstrap-vue'
 import VueRouter from 'vue-router';
 import {makeHot, reload} from './util/hot-reload';
 import {createRouter} from './router';
+import hoodie from './util/hoodie'
 
 Vue.use(BootstrapVue);
 
@@ -48,5 +49,20 @@ new Vue({
   components: {
     info,
     navbar,
+  },
+  data: {
+    user: null
+  },
+  async created(this: AppComponent) {
+    const user = await hoodie.account.get()
+    if (user.session && !this.user) {
+      this.user = user
+    }
+    console.log(user);
+  },
+  watch: {
+    user() {
+      console.log(this.user)
+    }
   }
 });
