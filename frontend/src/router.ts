@@ -7,6 +7,7 @@ const aboutComponent = () => import('./components/about.vue').then(({default: Ab
 const listComponent = () => import('./components/list').then(({ListComponent}) => ListComponent);
 const sidemenuComponent = () => import('./components/sidemenu').then(({SideMenuComponent}) => SideMenuComponent);
 const infoComponent = () => import('./components/info.vue').then(({default: InfoComponent}) => InfoComponent);
+const todoComponent = () => import('./components/todo.vue').then(({default: TodoComponent}) => TodoComponent);
 // const homeComponent = () => import(/* webpackChunkName: 'home' */'./components/home').then(({HomeComponent}) => HomeComponent);
 // const aboutComponent = () => import(/* webpackChunkName: 'about' */'./components/about.vue').then(({AboutComponent}) => AboutComponent);
 // const listComponent = () => import(/* webpackChunkName: 'list' */'./components/list').then(({ListComponent}) => ListComponent);
@@ -17,6 +18,7 @@ if (process.env.ENV === 'development' && module.hot) {
   const listModuleId = './components/list';
   const sidemenuModuleId = './components/sidemenu';
   const infoModuleId = './components/info.vue';
+  const todoModuleId = './components/todo.vue';
 
   // first arguments for `module.hot.accept` and `require` methods have to be static strings
   // see https://github.com/webpack/webpack/issues/5668
@@ -34,8 +36,10 @@ if (process.env.ENV === 'development' && module.hot) {
 
   makeHot(infoModuleId, infoComponent,
     module.hot.accept('./components/info.vue', () => reload(infoModuleId, (<any>require('./components/info.vue')).default)));
-}
 
+  makeHot(todoModuleId, todoComponent,
+    module.hot.accept('./components/todo.vue', () => reload(todoModuleId, (<any>require('./components/todo.vue')).default)));
+}
 Vue.use(VueRouter);
 
 export const createRoutes: () => RouteConfig[] = () => [
@@ -54,6 +58,10 @@ export const createRoutes: () => RouteConfig[] = () => [
   {
     path: '/info',
     component: infoComponent
+  },
+  {
+    path: '/todo',
+    component: todoComponent
   }
 ];
 

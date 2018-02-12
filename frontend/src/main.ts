@@ -16,6 +16,7 @@ const sidemenuComponent = () => import('./components/sidemenu')
 .then(({SideMenuComponent}) => SideMenuComponent);
 const login = async () => (await import('./components/login.vue')).default
 const info = async () => (await import('./components/info.vue')).default
+const todo = async () => (await import('./components/todo.vue')).default
 
 import './sass/main.scss';
 import {AppComponent} from './util/types';
@@ -35,6 +36,7 @@ declare global {
 
 Vue.component('login', login);
 Vue.component('sidemenu', sidemenuComponent);
+Vue.component('todo', todo);
 
 (window as Window & {app: AppComponent}).app =
 new Vue({

@@ -1,0 +1,25 @@
+#todo{
+  .checkbox-center {
+    margin-right: 0rem;
+  }
+
+  .custom-control-label::before {
+    top: 0.57rem;
+  }
+
+
+  .custom-control-label::after {
+    top: 0.57rem;
+  }
+
+  .form-control-lg {
+    @media only screen and (max-width: 342px) {
+      font-size: 1rem;
+    }
+  }
+
+  #form-input {
+    display: inline-block;
+    width:auto;
+  }
+}
