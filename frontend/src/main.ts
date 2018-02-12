@@ -42,6 +42,8 @@ Vue.component('login', login);
 Vue.component('sidemenu', sidemenu);
 Vue.component('todo', todo);
 
+// tslint:disable:no-invalid-this
+
 (window as Window & {app: AppComponent}).app =
 new Vue({
   el: '#app-main',
