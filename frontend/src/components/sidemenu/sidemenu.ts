@@ -16,7 +16,8 @@ export class SideMenuComponent extends Vue {
     new Link('About', '/about'),
     new Link('List', '/list'),
     new Link('Resources', '/info'),
-    new Link('Todo', '/todo')
+    new Link('Todo', '/todo'),
+    new Link('Chat', '/chat')
   ];
 
   mounted() {

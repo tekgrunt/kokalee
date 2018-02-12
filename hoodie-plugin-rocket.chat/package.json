@@ -1,0 +1,52 @@
+{
+  "name": "hoodie-plugin-rocket.chat",
+  "version": "0.0.0-development",
+  "description": "Hoodie plugin for Rocket.Chat IFrame auth",
+  "main": "index.js",
+  "scripts": {
+    "compile": "run-p compile:*",
+    "compile:ts": "tsc",
+    "compile:cpx": "cpx 'src/**/*.{html,css}' .",
+    "dev": "run-p -s 'compile:* -- --watch'",
+    "start": "hoodie",
+    "lint": "tslint",
+    "test": "echo 'Write some tests!'",
+    "posttest": "npm run lint",
+    "sort-package-json-and-add": "sort-package-json && git add package.json",
+    "sort-package-json-if-fully-staged": "unset GIT_DIR; git -c core.pager= ls-files -m package.json --error-unmatch || npm run sort-package-json-and-add"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tekgrunt/kokalee.git"
+  },
+  "keywords": [
+    "hoodie",
+    "plugin"
+  ],
+  "author": "Emily Marigold Klassen <forivall@gmail.com>",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/tekgrunt/kokalee/issues?q=is%3Aopen+is%3Aissue+label%3Ahoodie-plugin-rocket.chat"
+  },
+  "homepage": "https://github.com/tekgrunt/kokalee/tree/master/hoodie-plugin-rocket.chat",
+  "devDependencies": {
+    "@types/hapi": "^16.1.12",
+    "@types/node": "^9.4.0",
+    "cpx": "^1.5.0",
+    "hoodie": "^28.0.0",
+    "npm-run-all": "^4.1.2",
+    "tslint": "^5.9.1",
+    "typescript": "^2.7.1"
+  },
+  "hoodie": {
+    "name": "rocket.chat",
+    "public": "hoodie/public"
+  },
+  "dependencies": {
+    "@types/mongodb": "^3.0.5",
+    "mongodb": "^3.0.2"
+  }
+}

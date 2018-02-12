@@ -7,7 +7,6 @@ import {Link} from '../util/link';
 import {Logger} from '../../util/log';
 import hoodie from '../../util/hoodie'
 
-
 @Component({
   template: require('./navbar.html'),
   components: {
@@ -24,7 +23,8 @@ export class NavbarComponent extends Vue {
     new Link('About', '/about'),
     new Link('List', '/list'),
     new Link('Resources', '/info'),
-    new Link('Todo', '/todo')
+    new Link('Todo', '/todo'),
+    new Link('Chat', '/chat')
   ];
 
   @Watch('$route.path')

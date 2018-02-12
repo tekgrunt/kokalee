@@ -20,7 +20,6 @@ import {Logger} from '../util/log';
 export default class AboutComponent extends Vue {
 
   protected logger!: Logger;
-  repo = 'https://github.com/ducksoupdev/vue-webpack-typescript';
 
   mounted() {
     if (!this.logger) this.logger = new Logger();

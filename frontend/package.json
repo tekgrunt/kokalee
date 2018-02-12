@@ -15,6 +15,7 @@
     "coverage:open": "opn coverage/html-ts/index.html",
     "coverage:remap": "remap-istanbul -i coverage/json/coverage-final.json -o coverage/html-ts -t html",
     "coverage:run": "cross-env NODE_ENV=development karma start karma.coverage.js",
+    "predev": "cd ../hoodie-plugin-rocket.chat && npm run compile",
     "dev": "run-p dev:*",
     "dev:hoodie": "hoodie --port 8084 --public dist",
     "dev:vue": "webpack-dev-server --hot --inline",
@@ -38,6 +39,7 @@
     "bootstrap": "^4.0.0",
     "bootstrap-vue": "^2.0.0-rc.1",
     "hoodie": "^28.2.5",
+    "hoodie-plugin-rocket.chat": "file:../hoodie-plugin-rocket.chat",
     "jquery": "^3.3.1",
     "popper": "^1.0.1",
     "popper.js": "^1.13.0",
@@ -118,6 +120,17 @@
   "engines": {
     "node": ">=6",
     "npm": ">=3"
+  },
+  "hoodie": {
+    "plugins": [
+      "hoodie-plugin-rocket.chat"
+    ],
+    "app": {
+      "rocketChat": {
+        "rootUrl": "http://localhost:3000",
+        "mongoUrl": "mongodb://localhost:3001"
+      }
+    }
   },
   "lint-staged": {
     "linters": {

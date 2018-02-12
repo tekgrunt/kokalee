@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Login to Rocket.Chat using Hoodie</title>
+
+    <link rel="stylesheet" href="./style.css">
+  </head>
+
+  <body>
+    <div id="main" style="display: none">
+      <p id="error"></p>
+
+      <form>
+        <p>
+          <label>
+            Username<br>
+            <input name="username" placeholder="">
+          </label>
+        </p>
+        <p>
+          <label>
+            Password<br>
+            <input name="password" type="password" placeholder="">
+          </label>
+        </p>
+        <p>
+          <button type="submit" disabled>
+            Login
+          </button>
+          <button id="signup-button" disabled>
+            Create Account
+          </button>
+        </p>
+      </form>
+
+      <p>
+        <button id="signout-button">
+          Logout
+        </button>
+      </p>
+    </div>
+
+    <div class="chat-container" style="display: none">
+      <iframe class="chat"></iframe>
+    </div>
+
+    <script src="/hoodie/client.js"></script>
+    <script src="./login.js"></script>
+  </body>
+</html>
