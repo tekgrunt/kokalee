@@ -14,13 +14,22 @@
         </b-input-group>
       </div>
       <br>
-      <b-list-group class="">
+      <b-form-group v-for="todo in todos" :key="todo.id">
+           <b-check v-model="todo.completed" @change="checkboxToggle(todo)" class="checkbox-center"></b-check>
+           <b-form-input @keydown.enter.native="updateTodo(todo)" v-model="todo.title" :placeholder="todo.title" id="form-input">
+           </b-form-input>
+           <b-button-group class="float-right">
+             <b-btn @click="updateTodo(todo)" variant="outline-info" size="md">Edit</b-btn>
+             <b-btn @click="deleteTodo(todo)" variant="outline-danger" size="md">Delete</b-btn>
+           </b-button-group>
+       </b-form-group>
+      <!-- <b-list-group class="">
         <b-list-group-item v-for="todo in todos" :key="todo.id">
           <b-form-checkbox v-model="todo.completed" @change="checkboxToggle(todo)" class="checkbox-center"></b-form-checkbox>
           {{ todo.title }}
           <b-btn @click="deleteTodo(todo)" class="float-right" size="sm" variant="outline-danger">Delete</b-btn>
         </b-list-group-item>
-      </b-list-group>
+      </b-list-group> -->
     </b-col>
   </b-row>
 </template>
@@ -43,7 +52,7 @@ export default class TodoComponent extends Vue {
   protected store = hoodie.store.withIdPrefix('todo');
   todo: Todo = {title: '', completed: false};
   todos: Todo[] = [];
-  
+
   createTodo() {
     const title = this.todo.title.trim();
     this.store.add({
@@ -56,7 +65,7 @@ export default class TodoComponent extends Vue {
     this.todo.title = ''
   }
 
-  // once several todos are added, they don't get added in sequence. 
+  // once several todos are added, they don't get added in sequence.
   fetchTodos() {
     console.log('loading items')
     this.store.findAll().then((todos) => {
@@ -66,14 +75,14 @@ export default class TodoComponent extends Vue {
       this.hoodie.log(err)
     })
   }
-  
+
   deleteTodo(todo) {
     this.store.remove(todo).then((response) => {
       console.log(response);
       this.fetchTodos();
     })
   }
-  
+
   // would be nice to add a strikethrough for the todo.title if todo is completed
   checkboxToggle(todo) {
     const id = todo._id
@@ -83,7 +92,18 @@ export default class TodoComponent extends Vue {
     })
     console.log(todo)
   }
-  
+
+  updateTodo(todo) {
+   const id = todo._id
+   const title = todo.title
+   this.store.update(id, {
+     title: title
+   }).then((response) => {
+     console.log(response);
+     this.fetchTodos();
+   })
+ }
+
   created() {
     this.fetchTodos();
   }
