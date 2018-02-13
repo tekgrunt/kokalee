@@ -5,5 +5,5 @@ module.exports = {
   NODE_ENV: '"production"',
   DEBUG_MODE: false,
   API_KEY: '"XXXX-XXXXX-XXXX-XXXX"',
-  ROCKET_CHAT: '"https://ROCKET.CHAT.SERVER.LOCAL"'
+  ROCKET_CHAT: '"http://192.168.0.101:3004"'
 }
