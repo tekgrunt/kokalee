@@ -28,7 +28,7 @@
     "serve": "http-server dist/ -g -o",
     "sort-package-json-and-add": "sort-package-json && git add package.json",
     "sort-package-json-if-fully-staged": "unset GIT_DIR; git -c core.pager= ls-files -m package.json --error-unmatch || npm run sort-package-json-and-add",
-    "start": "hoodie --public dist",
+    "start": "node_modules/hoodie/bin/start.js --public dist",
     "test": "cross-env NODE_ENV=development karma start karma.unit.js",
     "test:debug": "cross-env NODE_ENV=development karma start karma.debug.js",
     "test:watch": "cross-env NODE_ENV=development karma start karma.unit.js --singleRun=false --auto-watch",
