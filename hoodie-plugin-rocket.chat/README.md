@@ -51,6 +51,22 @@ This plugin has `hoodie` as devDependency. The idea is that plugins can be
 started just like apps. Simply `git clone` this repository, run `npm install`
 and then `npm start`.
 
+## Deployment
+
+`npm run deploy`
+
+`scp kokalee-frontend-0.0.0.tgz pi@192.168.0.101:/home/pi/`
+
+`ssh pi@192.168.0.101`
+
+```
+cd ~
+tar xvf kokalee-frontend-0.0.0.tgz
+cd ~/package
+sudo npm start -- --port 80 --address 0.0.0.0
+```
+
+
 ## License
 
 [Apache 2.0](LICENSE)
