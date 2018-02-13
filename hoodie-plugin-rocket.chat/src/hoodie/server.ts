@@ -24,6 +24,7 @@ export interface HoodieOptions {
 export interface PluginOptions {
   rootUrl?: string
   mongoUrl?: string
+  mongoDbName?: string
 }
 
 export interface HoodieAccountsPlugin {
@@ -121,6 +122,8 @@ export function register(server: Server, options: HoodieOptions, next: (err?: Er
   // if you didn't set up mongodb automatically, this can be found at
   // .meteor/local/db/METEOR-PORT in whatever folder mongodb is run from
   const mongodb = opts.mongoUrl || 'mongodb://localhost:3001';
+
+  const dbName = opts.mongoDbName || 'meteor';
   // database: meteor
   // db.getCollection('users').find({})
 
@@ -132,7 +135,7 @@ export function register(server: Server, options: HoodieOptions, next: (err?: Er
     return MongoClient.connect(mongodb, {
       autoReconnect: true
     }).then((client) => {
-      coll = client.db('meteor').collection('users')
+      coll = client.db(dbName).collection('users')
       return client
     })
   }
