@@ -4,32 +4,27 @@
       <sidemenu id="sidemenu"></sidemenu>
     </b-col>
     <b-col md="10" class="content">
-      <h2 class="text-center">To Do List</h2>
       <div class="todo-input">
         <b-input-group>
-          <b-form-input v-model="todo.title" placeholder="What's on your list to do?"></b-form-input>
+          <b-form-input v-model="todo.title"  @keydown.enter.native="createTodo()" placeholder="What's on your list to do?"></b-form-input>
           <b-input-group-append>
             <b-btn @click.prevent="createTodo()" variant="primary" type="submit">Add Todo</b-btn>
           </b-input-group-append>
         </b-input-group>
       </div>
       <br>
-      <b-form-group v-for="todo in todos" :key="todo.id">
-           <b-check v-model="todo.completed" @change="checkboxToggle(todo)" class="checkbox-center"></b-check>
-           <b-form-input @keydown.enter.native="updateTodo(todo)" v-model="todo.title" :placeholder="todo.title" id="form-input">
-           </b-form-input>
-           <b-button-group class="float-right">
-             <b-btn @click="updateTodo(todo)" variant="outline-info" size="md">Edit</b-btn>
-             <b-btn @click="deleteTodo(todo)" variant="outline-danger" size="md">Delete</b-btn>
-           </b-button-group>
-       </b-form-group>
-      <!-- <b-list-group class="">
-        <b-list-group-item v-for="todo in todos" :key="todo.id">
-          <b-form-checkbox v-model="todo.completed" @change="checkboxToggle(todo)" class="checkbox-center"></b-form-checkbox>
-          {{ todo.title }}
-          <b-btn @click="deleteTodo(todo)" class="float-right" size="sm" variant="outline-danger">Delete</b-btn>
-        </b-list-group-item>
-      </b-list-group> -->
+      <b-form-group v-if="todos.length >= 1" label="Todo List" description="Click on a todo to edit.">
+       <b-input-group v-for="todo in todos" :key="todo.id" id="todo-group">
+         <b-check v-model="todo.completed" @change="checkboxToggle(todo)" class="checkbox-center"></b-check>
+         <b-form-input @keydown.enter.native="updateTodo(todo)" v-model="todo.title" :placeholder="todo.title" id="form-input"></b-form-input>
+         <b-input-group-append>
+           <b-btn @click="updateTodo(todo)" variant="outline-info" size="sm">Save</b-btn>
+        </b-input-group-append>
+        <b-input-group-append>
+          <b-btn @click="deleteTodo(todo)" variant="outline-danger" size="sm">Delete</b-btn>
+       </b-input-group-append>
+       </b-input-group>
+     </b-form-group>
     </b-col>
   </b-row>
 </template>
@@ -86,7 +81,7 @@ export default class TodoComponent extends Vue {
   // would be nice to add a strikethrough for the todo.title if todo is completed
   checkboxToggle(todo) {
     const id = todo._id
-    const completed = !this.todo.completed
+    const completed = !todo.completed
     this.store.update(id, {
       completed: completed
     })
