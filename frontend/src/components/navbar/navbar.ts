@@ -19,11 +19,10 @@ export class NavbarComponent extends Vue {
   showNav: boolean = false;
 
   links: Link[] = [
-    new Link('Home', '/'),
     new Link('About', '/about'),
-    new Link('List', '/list'),
     new Link('Resources', '/info'),
     new Link('Todo', '/todo'),
+    new Link('Share', '/share'),
     new Link('Chat', '/chat')
   ];
 
