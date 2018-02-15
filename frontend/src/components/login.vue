@@ -10,7 +10,11 @@
     <b-modal @ok="submit()" ref="modal" id="login-modal" :title="isSignup ? 'Create Account' : 'Login'">
       <form @submit.prevent="submit(); $refs.modal.hide()" class="input-group">
         <div>{{error}}</div>
-        <b-form-input type="text" name="username" v-model="credentials.username" placeholder="Username"></b-form-input>
+        <b-form-input type="email" name="username" v-model="credentials.username"
+                      :state="emailValid" placeholder="Email" aria-describedby="inputLiveFeedback"></b-form-input>
+        <b-form-invalid-feedback id="inputLiveFeedback">
+          Enter a valid email address
+        </b-form-invalid-feedback>
       </form>
     </b-modal>
   </div>
@@ -57,6 +61,16 @@ export default class LoginUi extends Vue {
     })
   }
 
+  get emailValid() {
+    const email = this.credentials.username;
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
+    {
+      return (true)
+    } else {
+      return (false)
+    }
+  }
+
   @Watch('user')
   onUserChange() {
     app.user = this.user
@@ -68,15 +82,13 @@ export default class LoginUi extends Vue {
   }
 
   submit() {
-    if (this.isSignup) {
+    if (this.isSignup && this.emailValid) {
       this.credentials.password = "temPassword2018";
-      this.signup(this.credentials);
-    } else {
-      this.login(this.credentials);
-    }
+        this.signup(this.credentials);
+      } else {
+        this.login(this.credentials);
+      }
   }
-
-
 
   login(credentials: UserCredentials) {
     hoodie.account.signIn(credentials)
