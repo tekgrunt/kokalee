@@ -4,15 +4,13 @@
     <button type="submit" class="btn btn-success">Logout</button>
   </form>
   <div v-else>
-    <b-btn variant="success" @click="isSignup = false" v-b-modal.login-modal>Login</b-btn>
-    <b-btn variant="success" @click="isSignup = true" v-b-modal.login-modal>Create Account</b-btn>
+    <b-btn variant="success" @click="isSignup = true" v-b-modal.login-modal>Login</b-btn>
 
     <!-- Modal Component -->
     <b-modal @ok="submit()" ref="modal" id="login-modal" :title="isSignup ? 'Create Account' : 'Login'">
       <form @submit.prevent="submit(); $refs.modal.hide()" class="input-group">
         <div>{{error}}</div>
         <b-form-input type="text" name="username" v-model="credentials.username" placeholder="Username"></b-form-input>
-        <b-form-input type="password" name="password" v-model="credentials.password" placeholder="Password"></b-form-input>
       </form>
     </b-modal>
   </div>
@@ -71,6 +69,7 @@ export default class LoginUi extends Vue {
 
   submit() {
     if (this.isSignup) {
+      this.credentials.password = "temPassword2018";
       this.signup(this.credentials);
     } else {
       this.login(this.credentials);
@@ -86,6 +85,7 @@ export default class LoginUi extends Vue {
     })
     .then((user) => {
       this.user = user
+      window.location.href = '/about';
     }).catch(this._onError)
   }
   signup(credentials: UserCredentials) {
@@ -105,6 +105,6 @@ export default class LoginUi extends Vue {
 
 </script>
 
-<style lang="scss">  
-  
+<style lang="scss">
+
 </style>
