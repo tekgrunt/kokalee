@@ -85,7 +85,7 @@ export default class LoginUi extends Vue {
     })
     .then((user) => {
       this.user = user
-      window.location.href = '/about';
+      this.$router.push('/about')
     }).catch(this._onError)
   }
   signup(credentials: UserCredentials) {
