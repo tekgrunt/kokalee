@@ -4,7 +4,53 @@
 
 See https://github.com/Microsoft/TypeScript-Vue-Starter for info on getting started with vue + typescript
 
-## Build Setup
+## Description
+
+This is the web client for the Kokalee project.
+
+We are using a variety of technologies to make this all work.
+
+Hoodie: http://hood.ie/
+Vue: https://vuejs.org/
+Webpack: https://webpack.js.org/
+TypeScript: https://www.typescriptlang.org/
+Sass: http://sass-lang.com/
+CouchDB: https://couchdb.apache.org/
+And more!
+
+The list is long but I think those are the main things to be aware of
+before jumping into the project. Hoodie is probably the technology that will
+seem the most foreign and it is not a bad idea to go read about it, progressive
+web apps in general and PouchDB & CouchDB (all of this is used to create the
+"offline first" paradigm we are trying to subscribe to).
+
+hoodie store documentation:
+https://github.com/hoodiehq/hoodie-store-client
+
+There is more but that is it for now... feel free to add to this file if you
+see something that is missing and that needs to be included :)
+
+## Development Setup
+
+First, install all Node.js dependencies:
+
+```bash
+npm install
+```
+
+Next, build the hoodie-plugin-rocket.chat project
+
+```bash
+npm run predev
+```
+
+Finally, launch the app in development mode with live reload:
+
+```bash
+npm run dev
+```
+
+Additional commands:
 
 ``` bash
 # install dependencies
@@ -40,32 +86,6 @@ npm run clean
 # check for updates, unused dependencies
 npx npm-check
 ```
-
-## Description
-
-This is the web client for the Kokalee project.
-
-We are using a variety of technologies to make this all work.
-
-Hoodie: http://hood.ie/
-Vue: https://vuejs.org/
-Webpack: https://webpack.js.org/
-TypeScript: https://www.typescriptlang.org/
-Sass: http://sass-lang.com/
-CouchDB: https://couchdb.apache.org/
-And more!
-
-The list is long but I think those are the main things to be aware of
-before jumping into the project. Hoodie is probably the technology that will
-seem the most foreign and it is not a bad idea to go read about it, progressive
-web apps in general and PouchDB & CouchDB (all of this is used to create the
-"offline first" paradigm we are trying to subscribe to).
-
-hoodie store documentation:
-https://github.com/hoodiehq/hoodie-store-client
-
-There is more but that is it for now... feel free to add to this file if you
-see something that is missing and that needs to be included :)
 
 ## Database Configuration
 
