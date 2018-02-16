@@ -132,5 +132,5 @@ ssh pi@192.168.0.101
 cd ~
 tar xvf kokalee-frontend-0.0.0.tgz
 cd package
-sudo npm start -- --port 80 --address 0.0.0.0  # sudo is required to listen on port 80
+sudo npm start -- --port 80 --address 0.0.0.0  # HACK: sudo is required to listen on port 80
 ```
