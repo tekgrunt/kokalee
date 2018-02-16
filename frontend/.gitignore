@@ -8,3 +8,4 @@ src/**/*.map
 *.log
 /.hoodie
 *.vue.d.ts
+kokalee-frontend-*.tgz

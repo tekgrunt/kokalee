@@ -87,7 +87,7 @@ npm run clean
 npx npm-check
 ```
 
-## Database Configuration
+## CouchDB Database Configuration
 
 By default, Hoodie will store data in the local file system using PouchDB (i.e. in the `.hoodie/data` directory. To hook
 it up to a real CouchDB instance, you need to create a JSON-formatted `.hoodierc` file in the current directory. Consult
@@ -111,3 +111,26 @@ in understanding how Hoodie interacts with CouchDB.
 
 See [Set up CouchDB on Raspberry Pi](https://github.com/tekgrunt/kokalee/wiki/Set-up-CouchDB-on-Raspberry-Pi) in the
 project's wiki for information specifically on installing and configuring CouchDB on Raspberry Pi hardware.
+
+## Raspberry Pi Deployment
+
+NOTE: Ensure that the ARM release of Node.js [v6](https://nodejs.org/dist/latest-v6.x/) is installed on the Raspberry Pi
+before proceeding.
+
+Create or update a `.hoodierc` file in the current directory according to the
+[CouchDB Database Configuration](#database-configuration) section with `dbUrl` set to "http://192.168.0.101:5984/kokalee"
+(replace `192.168.0.101` with the actual IP address of the Raspberry Pi as appropriate).
+
+Execute these commands in a terminal from the current directory (replace `192.168.0.101` as appropriate):
+
+```bash
+npm run deploy
+scp kokalee-frontend-0.0.0.tgz pi@192.168.0.101:~
+ssh pi@192.168.0.101
+
+# The following commands are executed remotely on the Raspberry Pi via the SSH connection
+cd ~
+tar xvf kokalee-frontend-0.0.0.tgz
+cd package
+sudo npm start -- --port 80 --address 0.0.0.0  # sudo is required to listen on port 80
+```
