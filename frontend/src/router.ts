@@ -4,7 +4,7 @@ import {makeHot, reload} from './util/hot-reload';
 
 const homeComponent = () => import('./components/home').then(({HomeComponent}) => HomeComponent);
 const aboutComponent = () => import('./components/about.vue').then(({default: AboutComponent}) => AboutComponent);
-const listComponent = () => import('./components/list').then(({ListComponent}) => ListComponent);
+const shareComponent = () => import('./components/share.vue').then(({default: ShareComponent}) => ShareComponent);
 const sidemenuComponent = () => import('./components/sidemenu').then(({SideMenuComponent}) => SideMenuComponent);
 const infoComponent = () => import('./components/info.vue').then(({default: InfoComponent}) => InfoComponent);
 const todoComponent = () => import('./components/todo.vue').then(({default: TodoComponent}) => TodoComponent);
@@ -13,7 +13,7 @@ const chat = async () => (await import('./components/chat.vue')).default
 if (process.env.ENV === 'development' && module.hot) {
   const homeModuleId = './components/home';
   const aboutModuleId = './components/about.vue';
-  const listModuleId = './components/list';
+  const shareModuleId = './components/share';
   const sidemenuModuleId = './components/sidemenu';
   const infoModuleId = './components/info.vue';
   const todoModuleId = './components/todo.vue';
@@ -26,8 +26,8 @@ if (process.env.ENV === 'development' && module.hot) {
   makeHot(aboutModuleId, aboutComponent,
     module.hot.accept('./components/about.vue', () => reload(aboutModuleId, (<any>require('./components/about.vue')).default)));
 
-  makeHot(listModuleId, listComponent,
-    module.hot.accept('./components/list', () => reload(listModuleId, (<any>require('./components/list')).ListComponent)));
+  makeHot(shareModuleId, shareComponent,
+    module.hot.accept('./components/share', () => reload(shareModuleId, (<any>require('./components/share')).ShareComponent)));
 
   makeHot(sidemenuModuleId, sidemenuComponent,
     module.hot.accept('./components/sidemenu', () => reload(sidemenuModuleId, (<any>require('./components/sidemenu')).SideMenuComponent)));
@@ -55,8 +55,8 @@ export const createRoutes: () => RouteConfig[] = () => [
     component: aboutComponent,
   },
   {
-    path: '/list',
-    component: listComponent,
+    path: '/share',
+    component: shareComponent,
   },
   {
     path: '/info',

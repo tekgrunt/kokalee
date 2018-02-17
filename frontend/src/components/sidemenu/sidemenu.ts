@@ -12,11 +12,10 @@ export class SideMenuComponent extends Vue {
   protected logger!: Logger;
 
   links: Link[] = [
-    new Link('Home', '/'),
     new Link('About', '/about'),
-    new Link('List', '/list'),
     new Link('Resources', '/info'),
     new Link('Todo', '/todo'),
+    new Link('Share', '/share'),
     new Link('Chat', '/chat')
   ];
 

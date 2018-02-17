@@ -18,3 +18,7 @@ html, body, #app-main {
 .content {
   margin-top: $navbar-height + 20px
 }
+
+.pl-0, .px-0{
+  padding-right: 0px !important;
+}
