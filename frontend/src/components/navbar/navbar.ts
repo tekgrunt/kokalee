@@ -28,6 +28,14 @@ export class NavbarComponent extends Vue {
 
   @Watch('$route.path')
   pathChanged() {
+    hoodie.account.get().then((user) => {
+      if (user.session) {
+        // user is signed in, show navbar
+        this.showNav = true;
+      }
+    }).catch((err) => {
+      console.log(err)
+    })
     this.logger.info(`Changed current path to: ${this.$route.path}`);
   }
 
