@@ -2,4 +2,5 @@
   <b-nav-item  v-for="link in links" :key="link.path" v-bind:class="{'active' : $route.path == link.path}">
     <router-link v-bind:to="link.path">{{link.name}}</router-link>
   </b-nav-item>
+  <li class="nav-item"><a href="http://192.186.0.100:3004" target="_blank" class="nav-link">Chat</a></li>
 </b-nav>

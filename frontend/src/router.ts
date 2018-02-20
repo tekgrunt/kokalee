@@ -3,7 +3,6 @@ import VueRouter, {Location, Route, RouteConfig} from 'vue-router';
 import {makeHot, reload} from './util/hot-reload';
 
 const homeComponent = () => import('./components/home').then(({HomeComponent}) => HomeComponent);
-const aboutComponent = () => import('./components/about.vue').then(({default: AboutComponent}) => AboutComponent);
 const shareComponent = () => import('./components/share.vue').then(({default: ShareComponent}) => ShareComponent);
 const sidemenuComponent = () => import('./components/sidemenu').then(({SideMenuComponent}) => SideMenuComponent);
 const infoComponent = () => import('./components/info.vue').then(({default: InfoComponent}) => InfoComponent);
@@ -12,7 +11,6 @@ const chat = async () => (await import('./components/chat.vue')).default
 
 if (process.env.ENV === 'development' && module.hot) {
   const homeModuleId = './components/home';
-  const aboutModuleId = './components/about.vue';
   const shareModuleId = './components/share';
   const sidemenuModuleId = './components/sidemenu';
   const infoModuleId = './components/info.vue';
@@ -22,9 +20,6 @@ if (process.env.ENV === 'development' && module.hot) {
   // see https://github.com/webpack/webpack/issues/5668
   makeHot(homeModuleId, homeComponent,
     module.hot.accept('./components/home', () => reload(homeModuleId, (<any>require('./components/home')).HomeComponent)));
-
-  makeHot(aboutModuleId, aboutComponent,
-    module.hot.accept('./components/about.vue', () => reload(aboutModuleId, (<any>require('./components/about.vue')).default)));
 
   makeHot(shareModuleId, shareComponent,
     module.hot.accept('./components/share', () => reload(shareModuleId, (<any>require('./components/share')).ShareComponent)));
@@ -49,10 +44,6 @@ export const createRoutes: () => RouteConfig[] = () => [
   {
     path: '/',
     component: homeComponent,
-  },
-  {
-    path: '/about',
-    component: aboutComponent,
   },
   {
     path: '/share',

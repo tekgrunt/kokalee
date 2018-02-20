@@ -27,13 +27,11 @@ describe('Navbar component', () => {
     directiveTest = new ComponentTest('<div><navbar></navbar><router-view>loading...</router-view></div>', {'navbar': MockNavbarComponent});
 
     const homeComponent = {template: '<div class="home">Home</div>'};
-    const aboutComponent = {template: '<div class="about">About</div>'};
     const listComponent = {template: '<div class="list">List</div>'};
 
     router = new VueRouter({
       routes: [
         {path: '/', component: homeComponent},
-        {path: '/about', component: aboutComponent},
         {path: '/list', component: listComponent}
       ]
     });
@@ -49,23 +47,6 @@ describe('Navbar component', () => {
     });
   });
 
-  describe('When clicking the about link', () => {
-    beforeEach(async () => {
-      directiveTest.createComponent({router: router});
-
-      await directiveTest.execute((vm) => {
-        const anchor = <HTMLAnchorElement>vm.$el.querySelector('ul.nav li a[href="#/about"]');
-        anchor.click();
-      });
-    });
-
-    it('should render correct about contents', async () => {
-      await directiveTest.execute((vm) => {
-        expect(vm.$el.querySelector('div.about')!.textContent).to.equal('About');
-      });
-    });
-  });
-
   describe('When clicking the list link', () => {
     beforeEach(async () => {
       directiveTest.createComponent({router: router});
@@ -73,12 +54,6 @@ describe('Navbar component', () => {
       await directiveTest.execute((vm) => {
         const anchor = <HTMLAnchorElement>vm.$el.querySelector('ul.nav li a[href="#/list"]');
         anchor.click();
-      });
-    });
-
-    it('should render correct about contents', async () => {
-      await directiveTest.execute((vm) => {
-        expect(vm.$el.querySelector('div.list')!.textContent).to.equal('List');
       });
     });
   });

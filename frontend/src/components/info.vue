@@ -5,7 +5,7 @@
     </b-col>
     <b-col md="10" class="content">
       <div>
-        <h2>Forestry Guidelines</h2>
+        <h2>Work Guidelines</h2>
       </div>
       <b-card>
         <b-link v-on:click="showOne = !showOne" class="resources-link">
@@ -167,8 +167,6 @@
           </div>
         </div>
       </b-card>
-      <br>
-      <p>For more details, see the Ministry of Forests <a href="https://www.for.gov.bc.ca/hfp/silviculture/planting/minsafe/MINSAFEE/MSGHOME.HTM">manual.</a></p>
     </b-col>
   </b-row>
 </template>
