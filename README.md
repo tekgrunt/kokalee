@@ -1,4 +1,4 @@
-# Kokalee: Fog Computing for Teams
+# Kokalee: Fog Computing for Teams [IDLE]
 
 Kokalee creates mobile intranets that can be used by a wide variety of stake holders working at the edge of the network and beyond.
 
